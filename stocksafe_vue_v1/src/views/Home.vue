@@ -548,7 +548,7 @@
                           <div
                             class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
                           >
-                            50%
+                            30%
                           </div>
                         </div>
                         <div class="col">
@@ -556,7 +556,7 @@
                             <div
                               class="progress-bar bg-info"
                               role="progressbar"
-                              style="width: 50%"
+                              style="width: 30%"
                               aria-valuenow="50"
                               aria-valuemin="0"
                               aria-valuemax="100"
@@ -924,12 +924,12 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+// import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld,
+    // HelloWorld,
   },
 };
 </script>
