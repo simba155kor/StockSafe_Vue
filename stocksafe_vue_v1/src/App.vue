@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <navi-bar />
-    <router-view />
+    <div class="row">
+      <navi-bar />
+      <div class="col">
+        <router-view />
+      </div>
+    </div>
   </div>
 </template>
 
