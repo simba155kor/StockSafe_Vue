@@ -16,17 +16,6 @@
     </a>
 
     <!-- Divider -->
-    <hr class="sidebar-divider my-0" />
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active mx-3">
-      <a class="nav-link" href="index.html">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>00사용자님 환영합니다.</span></a
-      >
-    </li>
-
-    <!-- Divider -->
     <hr class="sidebar-divider" />
 
     <!-- Heading -->
