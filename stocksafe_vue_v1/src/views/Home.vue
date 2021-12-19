@@ -8,7 +8,14 @@ c
         <div id="content">
           <!-- Topbar -->
           <nav
-            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+            class="
+              navbar navbar-expand navbar-light
+              bg-white
+              topbar
+              mb-4
+              static-top
+              shadow
+            "
           >
             <!-- Sidebar Toggle (Topbar) -->
             <button
@@ -20,7 +27,15 @@ c
 
             <!-- Topbar Search -->
             <form
-              class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+              class="
+                d-none d-sm-inline-block
+                form-inline
+                mr-auto
+                ml-md-3
+                my-2 my-md-0
+                mw-100
+                navbar-search
+              "
             >
               <div class="input-group">
                 <input
@@ -55,7 +70,12 @@ c
                 </a>
                 <!-- Dropdown - Messages -->
                 <div
-                  class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                  class="
+                    dropdown-menu dropdown-menu-right
+                    p-3
+                    shadow
+                    animated--grow-in
+                  "
                   aria-labelledby="searchDropdown"
                 >
                   <form class="form-inline mr-auto w-100 navbar-search">
@@ -94,7 +114,11 @@ c
                 </a>
                 <!-- Dropdown - Alerts -->
                 <div
-                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                  class="
+                    dropdown-list dropdown-menu dropdown-menu-right
+                    shadow
+                    animated--grow-in
+                  "
                   aria-labelledby="alertsDropdown"
                 >
                   <h6 class="dropdown-header">Alerts Center</h6>
@@ -159,7 +183,11 @@ c
                 </a>
                 <!-- Dropdown - Messages -->
                 <div
-                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                  class="
+                    dropdown-list dropdown-menu dropdown-menu-right
+                    shadow
+                    animated--grow-in
+                  "
                   aria-labelledby="messagesDropdown"
                 >
                   <h6 class="dropdown-header">Message Center</h6>
@@ -265,7 +293,11 @@ c
                 </a>
                 <!-- Dropdown - User Information -->
                 <div
-                  class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                  class="
+                    dropdown-menu dropdown-menu-right
+                    shadow
+                    animated--grow-in
+                  "
                   aria-labelledby="userDropdown"
                 >
                   <a class="dropdown-item" href="#">
@@ -307,7 +339,11 @@ c
               <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
               <a
                 href="#"
-                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                class="
+                  d-none d-sm-inline-block
+                  btn btn-sm btn-primary
+                  shadow-sm
+                "
                 ><i class="fas fa-download fa-sm text-white-50"></i> Generate
                 Report</a
               >
@@ -322,7 +358,12 @@ c
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                         <div
-                          class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                          class="
+                            text-xs
+                            font-weight-bold
+                            text-primary text-uppercase
+                            mb-1
+                          "
                         >
                           Earnings (Monthly)
                         </div>
@@ -345,7 +386,12 @@ c
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                         <div
-                          class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                          class="
+                            text-xs
+                            font-weight-bold
+                            text-success text-uppercase
+                            mb-1
+                          "
                         >
                           Earnings (Annual)
                         </div>
@@ -368,14 +414,25 @@ c
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                         <div
-                          class="text-xs font-weight-bold text-info text-uppercase mb-1"
+                          class="
+                            text-xs
+                            font-weight-bold
+                            text-info text-uppercase
+                            mb-1
+                          "
                         >
                           Tasks
                         </div>
                         <div class="row no-gutters align-items-center">
                           <div class="col-auto">
                             <div
-                              class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                              class="
+                                h5
+                                mb-0
+                                mr-3
+                                font-weight-bold
+                                text-gray-800
+                              "
                             >
                               30%
                             </div>
@@ -411,7 +468,12 @@ c
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                         <div
-                          class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+                          class="
+                            text-xs
+                            font-weight-bold
+                            text-warning text-uppercase
+                            mb-1
+                          "
                         >
                           Pending Requests
                         </div>
@@ -436,7 +498,14 @@ c
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div
-                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                    class="
+                      card-header
+                      py-3
+                      d-flex
+                      flex-row
+                      align-items-center
+                      justify-content-between
+                    "
                   >
                     <h6 class="m-0 font-weight-bold text-primary">
                       Earnings Overview
@@ -456,7 +525,11 @@ c
                         ></i>
                       </a>
                       <div
-                        class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        class="
+                          dropdown-menu dropdown-menu-right
+                          shadow
+                          animated--fade-in
+                        "
                         aria-labelledby="dropdownMenuLink"
                       >
                         <div class="dropdown-header">Dropdown Header:</div>
@@ -484,7 +557,14 @@ c
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div
-                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                    class="
+                      card-header
+                      py-3
+                      d-flex
+                      flex-row
+                      align-items-center
+                      justify-content-between
+                    "
                   >
                     <h6 class="m-0 font-weight-bold text-primary">
                       Revenue Sources
@@ -504,7 +584,11 @@ c
                         ></i>
                       </a>
                       <div
-                        class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        class="
+                          dropdown-menu dropdown-menu-right
+                          shadow
+                          animated--fade-in
+                        "
                         aria-labelledby="dropdownMenuLink"
                       >
                         <div class="dropdown-header">Dropdown Header:</div>
@@ -769,139 +853,16 @@ c
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld.vue";
 
-import {
-  Chart,
-  LineElement,
-  LineController,
-  LinearScale,
-  CategoryScale,
-  PointElement,
-} from "chart.js";
-Chart.register(
-  LineElement,
-  LineController,
-  LinearScale,
-  CategoryScale,
-  PointElement
-);
-
 export default {
   name: "Home",
   data() {
     return {
       key1: "width : 20%",
-      myChart: null,
     };
   },
   components: {},
-  methods: {
-    fillData() {
-      const ctx = document.getElementById("chart1").getContext("2d");
-      this.myChart = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
-          datasets: [
-            {
-              label: "Earnings",
-              lineTension: 0.3,
-              backgroundColor: "rgba(78, 115, 223, 0.05)",
-              borderColor: "rgba(78, 115, 223, 1)",
-              pointRadius: 3,
-              pointBackgroundColor: "rgba(78, 115, 223, 1)",
-              pointBorderColor: "rgba(78, 115, 223, 1)",
-              pointHoverRadius: 3,
-              pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-              pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-              pointHitRadius: 10,
-              pointBorderWidth: 2,
-              data: [
-                0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000,
-                25000, 40000,
-              ],
-            },
-          ],
-        },
-        options: {
-          maintainAspectRatio: false,
-          layout: {
-            padding: {
-              left: 10,
-              right: 25,
-              top: 25,
-              bottom: 0,
-            },
-          },
-          scales: {
-            xAxes: [
-              {
-                time: {
-                  unit: "date",
-                },
-                gridLines: {
-                  display: false,
-                  drawBorder: false,
-                },
-                ticks: {
-                  maxTicksLimit: 7,
-                },
-              },
-            ],
-            yAxes: [
-              {
-                ticks: {
-                  maxTicksLimit: 5,
-                  padding: 10,
-                  // Include a dollar sign in the ticks
-                },
-                gridLines: {
-                  color: "rgb(234, 236, 244)",
-                  zeroLineColor: "rgb(234, 236, 244)",
-                  drawBorder: false,
-                  borderDash: [2],
-                  zeroLineBorderDash: [2],
-                },
-              },
-            ],
-          },
-          legend: {
-            display: false,
-          },
-          tooltips: {
-            backgroundColor: "rgb(255,255,255)",
-            bodyFontColor: "#858796",
-            titleMarginBottom: 10,
-            titleFontColor: "#6e707e",
-            titleFontSize: 14,
-            borderColor: "#dddfeb",
-            borderWidth: 1,
-            xPadding: 15,
-            yPadding: 15,
-            displayColors: false,
-            intersect: false,
-            mode: "index",
-            caretPadding: 10,
-          },
-        },
-      });
-    },
-  },
-  mounted() {
-    this.fillData();
-  },
+  methods: {},
+  mounted() {},
 };
 </script>
 
