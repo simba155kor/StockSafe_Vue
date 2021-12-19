@@ -181,7 +181,14 @@
       <div id="content">
         <!-- Topbar -->
         <nav
-          class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+          class="
+            navbar navbar-expand navbar-light
+            bg-white
+            topbar
+            mb-4
+            static-top
+            shadow
+          "
         >
           <!-- Sidebar Toggle (Topbar) -->
           <button
@@ -193,7 +200,15 @@
 
           <!-- Topbar Search -->
           <form
-            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+            class="
+              d-none d-sm-inline-block
+              form-inline
+              mr-auto
+              ml-md-3
+              my-2 my-md-0
+              mw-100
+              navbar-search
+            "
           >
             <div class="input-group">
               <input
@@ -228,7 +243,12 @@
               </a>
               <!-- Dropdown - Messages -->
               <div
-                class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                class="
+                  dropdown-menu dropdown-menu-right
+                  p-3
+                  shadow
+                  animated--grow-in
+                "
                 aria-labelledby="searchDropdown"
               >
                 <form class="form-inline mr-auto w-100 navbar-search">
@@ -267,7 +287,11 @@
               </a>
               <!-- Dropdown - Alerts -->
               <div
-                class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                class="
+                  dropdown-list dropdown-menu dropdown-menu-right
+                  shadow
+                  animated--grow-in
+                "
                 aria-labelledby="alertsDropdown"
               >
                 <h6 class="dropdown-header">Alerts Center</h6>
@@ -332,7 +356,11 @@
               </a>
               <!-- Dropdown - Messages -->
               <div
-                class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                class="
+                  dropdown-list dropdown-menu dropdown-menu-right
+                  shadow
+                  animated--grow-in
+                "
                 aria-labelledby="messagesDropdown"
               >
                 <h6 class="dropdown-header">Message Center</h6>
@@ -436,7 +464,11 @@
               </a>
               <!-- Dropdown - User Information -->
               <div
-                class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                class="
+                  dropdown-menu dropdown-menu-right
+                  shadow
+                  animated--grow-in
+                "
                 aria-labelledby="userDropdown"
               >
                 <a class="dropdown-item" href="#">
@@ -493,7 +525,12 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div
-                        class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                        class="
+                          text-xs
+                          font-weight-bold
+                          text-primary text-uppercase
+                          mb-1
+                        "
                       >
                         Earnings (Monthly)
                       </div>
@@ -516,7 +553,12 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div
-                        class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                        class="
+                          text-xs
+                          font-weight-bold
+                          text-success text-uppercase
+                          mb-1
+                        "
                       >
                         Earnings (Annual)
                       </div>
@@ -539,7 +581,12 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div
-                        class="text-xs font-weight-bold text-info text-uppercase mb-1"
+                        class="
+                          text-xs
+                          font-weight-bold
+                          text-info text-uppercase
+                          mb-1
+                        "
                       >
                         Tasks
                       </div>
@@ -580,7 +627,12 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div
-                        class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+                        class="
+                          text-xs
+                          font-weight-bold
+                          text-warning text-uppercase
+                          mb-1
+                        "
                       >
                         Pending Requests
                       </div>
@@ -605,7 +657,14 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div
-                  class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                  class="
+                    card-header
+                    py-3
+                    d-flex
+                    flex-row
+                    align-items-center
+                    justify-content-between
+                  "
                 >
                   <h6 class="m-0 font-weight-bold text-primary">
                     Earnings Overview
@@ -625,7 +684,11 @@
                       ></i>
                     </a>
                     <div
-                      class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                      class="
+                        dropdown-menu dropdown-menu-right
+                        shadow
+                        animated--fade-in
+                      "
                       aria-labelledby="dropdownMenuLink"
                     >
                       <div class="dropdown-header">Dropdown Header:</div>
@@ -650,7 +713,14 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div
-                  class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                  class="
+                    card-header
+                    py-3
+                    d-flex
+                    flex-row
+                    align-items-center
+                    justify-content-between
+                  "
                 >
                   <h6 class="m-0 font-weight-bold text-primary">
                     Revenue Sources
@@ -670,7 +740,11 @@
                       ></i>
                     </a>
                     <div
-                      class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                      class="
+                        dropdown-menu dropdown-menu-right
+                        shadow
+                        animated--fade-in
+                      "
                       aria-labelledby="dropdownMenuLink"
                     >
                       <div class="dropdown-header">Dropdown Header:</div>
@@ -769,13 +843,16 @@
                   </h4>
                   <div class="progress">
                     <div
+                      v-bind="key1"
                       class="progress-bar bg-success"
                       role="progressbar"
-                      style="width: 100%"
+                      :style="key1"
                       aria-valuenow="100"
                       aria-valuemin="0"
                       aria-valuemax="100"
-                    ></div>
+                    >
+                      {{ key1 }}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -928,6 +1005,11 @@
 
 export default {
   name: "Home",
+  data() {
+    return {
+      key1: "width : 20%",
+    };
+  },
   components: {
     // HelloWorld,
   },
