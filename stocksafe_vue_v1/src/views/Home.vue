@@ -1003,6 +1003,10 @@
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld.vue";
 
+import Chart from "chart.js";
+import chartArea from "@/js/demo/chart-area-demo.js";
+Chart.register(chartArea);
+
 export default {
   name: "Home",
   data() {
