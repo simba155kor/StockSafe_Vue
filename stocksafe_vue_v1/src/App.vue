@@ -1,9 +1,14 @@
 <template>
-  <div id="app">
-    <div class="row">
-      <navi-bar />
-      <div class="col">
-        <router-view />
+  <div id="page-top">
+    <div id="app">
+      <!-- Page Wrapper -->
+      <div id="wrapper">
+        <div class="row">
+          <navi-bar />
+          <div class="col">
+            <router-view />
+          </div>
+        </div>
       </div>
     </div>
   </div>
