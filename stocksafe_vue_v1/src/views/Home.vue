@@ -780,9 +780,7 @@ export default {
       myChart: null,
     };
   },
-  components: {
-    myLineChart,
-  },
+  components: {},
   methods: {
     fillData() {
       const ctx = document.getElementById("chart1").getContext("2d");
