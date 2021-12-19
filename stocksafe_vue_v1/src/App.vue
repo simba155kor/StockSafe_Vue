@@ -1,11 +1,11 @@
 <template>
-  <div id="page-top" style="width: 100%">
-    <div id="app" style="width: 100%">
+  <div id="page-top">
+    <div id="app">
       <!-- Page Wrapper -->
-      <div id="wrapper">
-        <div class="row">
+      <div>
+        <div class="row mr-0">
           <navi-bar />
-          <div>
+          <div class="col col-10">
             <router-view />
           </div>
         </div>
