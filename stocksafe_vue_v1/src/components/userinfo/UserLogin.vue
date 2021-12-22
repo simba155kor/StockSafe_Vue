@@ -62,8 +62,6 @@ export default {
   methods: {
     ...mapMutations(["SET_LOGIN_STATE"]),
     Login() {
-      console.log(this.login_user);
-
       http
         .post(`/member/login`, {
           id: this.login_user.id,
@@ -71,7 +69,7 @@ export default {
         })
         .then(({ data }) => {
           let msg = "아이디 혹은 비밀번호를 확인해주세요.";
-          if (data.message != "fail") {
+          if (data != "") {
             msg = "로그인 성공";
             this.SET_LOGIN_STATE({
               id: this.login_user.id,
