@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD:stocksafe_vue_v1/src/views/UserInfo.vue
   <div class="container">
     <!-- Outer Row -->
     <div class="row justify-content-center">
@@ -34,9 +33,6 @@
       </div>
     </div>
   </div>
-=======
-  <div>user</div>
->>>>>>> 4530838016da54aa9aadef2e8317f4f872196966:stocksafe_vue_v1/src/views/User.vue
 </template>
 
 <script>
