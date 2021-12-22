@@ -5,7 +5,7 @@ import LikeStock from "../views/LikeStock.vue";
 import MyStock from "../views/MyStock.vue";
 import TodayIssue from "../views/TodayIssue.vue";
 import User from "../views/User.vue";
-import UserLogin from "@/components/userinfo/UserLogin.vue"
+import UserLogin from "@/components/userinfo/UserLogin.vue";
 
 Vue.use(VueRouter);
 
@@ -34,18 +34,15 @@ const routes = [
     path: "/user",
     name: "User",
     component: User,
+    redirect: "/user/login",
     children: [
-    {
-       path: "login",
-        name: "UserLogin",
-       component : UserLogin,
-      },
       {
-        
-      }
-  ]
+        path: "login",
+        name: "UserLogin",
+        component: UserLogin,
+      },
+    ],
   },
-
 ];
 
 const router = new VueRouter({
