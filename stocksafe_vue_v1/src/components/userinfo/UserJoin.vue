@@ -1,11 +1,15 @@
 <template>
   <form class="user">
+    <div class="text-center">
+      <h1 class="h4 text-gray-900 mb-4">Welcome!</h1>
+    </div>
     <div class="form-group">
       <input
         type="text"
         class="form-control form-control-user"
         id="id"
         placeholder="ID"
+        v-model="singup_data.id"
       />
     </div>
     <div class="form-group row">
@@ -15,6 +19,7 @@
           class="form-control form-control-user"
           id="exampleInputPassword"
           placeholder="Password"
+          v-model="singup_data.member_pw"
         />
       </div>
       <div class="col-sm-6">
@@ -32,15 +37,8 @@
           type="text"
           class="form-control form-control-user"
           id="firstName"
-          placeholder="First Name"
-        />
-      </div>
-      <div class="col-sm-6">
-        <input
-          type="text"
-          class="form-control form-control-user"
-          id="lastName"
-          placeholder="Last Name"
+          placeholder="Nick Name"
+          v-model="singup_data.member_name"
         />
       </div>
     </div>
@@ -51,6 +49,7 @@
           class="form-control form-control-user"
           id="exampleFirstName"
           placeholder="email"
+          v-model="singup_data.member_email_id"
         />
       </div>
       @
@@ -60,12 +59,14 @@
           class="form-control form-control-user"
           id="exampleLastName"
           placeholder="email domain"
+          v-model="singup_data.member_email_domain"
         />
       </div>
     </div>
-    <a href="login.html" class="btn btn-primary btn-user btn-block">
+
+    <button class="btn btn-primary btn-user btn-block" @click="SignUp()">
       Register Account
-    </a>
+    </button>
     <hr />
     <a href="index.html" class="btn btn-google btn-user btn-block">
       <i class="fab fa-google fa-fw"></i> Register with Google
@@ -77,7 +78,42 @@
 </template>
 
 <script>
-export default {};
+import http from "@/utils/http-common.js";
+
+export default {
+  data() {
+    return {
+      singup_data: {
+        id: "",
+        member_pw: "",
+        member_name: "",
+        member_email_id: "",
+        member_email_domain: "",
+      },
+    };
+  },
+  methods: {
+    SignUp() {
+      http
+        .post(`/member/signup`, {
+          id: this.singup_data.id,
+          memberPw: this.singup_data.member_pw,
+          memberName: this.singup_data.member_name,
+          memberEmailId: this.singup_data.member_email_id,
+          memberEmailDomain: this.singup_data.member_email_domain,
+        })
+        .then(({ data }) => {
+          console.log(data);
+          let msg = "회원가입 실패.";
+          if (data != "") {
+            msg = "회원가입 성공";
+            alert(msg);
+            this.$router.push({ name: "Home" });
+          } else alert(msg);
+        });
+    },
+  },
+};
 </script>
 
 <style></style>

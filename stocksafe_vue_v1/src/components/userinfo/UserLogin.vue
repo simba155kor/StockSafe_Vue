@@ -1,5 +1,8 @@
 <template>
   <form class="user">
+    <div class="text-center">
+      <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+    </div>
     <div class="form-group">
       <input
         type="text"
@@ -44,7 +47,9 @@
       >
     </div>
     <div class="text-center">
-      <a class="small" href="register.html">Create an Account!</a>
+      <router-link class="small" :to="{ name: 'UserJoin' }"
+        >Create an Account!</router-link
+      >
     </div>
   </form>
 </template>

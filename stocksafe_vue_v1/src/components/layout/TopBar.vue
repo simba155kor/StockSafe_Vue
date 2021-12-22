@@ -86,6 +86,16 @@
       </li>
 
       <span v-if="this.getLoginState"> {{ this.getName }} 님 환영합니다!</span>
+      <div v-else>
+        <button class="btn btn-success">
+          <router-link
+            :to="{ name: 'UserJoin' }"
+            style="color: white; text-decoration: none"
+          >
+            회원가입</router-link
+          >
+        </button>
+      </div>
 
       <div class="topbar-divider d-none d-sm-block"></div>
 
