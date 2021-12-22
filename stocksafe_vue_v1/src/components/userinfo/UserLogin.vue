@@ -37,6 +37,15 @@
     <a href="index.html" class="btn btn-facebook btn-user btn-block">
       <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
     </a>
+    <hr />
+    <div class="text-center">
+      <router-link class="small" :to="{ name: 'UserPassword' }"
+        >Forgot Password?</router-link
+      >
+    </div>
+    <div class="text-center">
+      <a class="small" href="register.html">Create an Account!</a>
+    </div>
   </form>
 </template>
 
