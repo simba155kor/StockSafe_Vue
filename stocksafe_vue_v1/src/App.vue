@@ -6,6 +6,7 @@
         <div class="row mr-0">
           <navi-bar />
           <div class="col col-10">
+            <top-bar />
             <router-view />
           </div>
         </div>
@@ -16,9 +17,12 @@
 
 <script>
 import NaviBar from "./components/layout/NaviBar.vue";
+import TopBar from "./components/layout/TopBar.vue";
+
 export default {
   components: {
     NaviBar,
+    TopBar,
   },
 };
 </script>
