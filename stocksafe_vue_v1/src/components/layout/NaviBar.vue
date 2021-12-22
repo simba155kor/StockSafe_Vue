@@ -36,7 +36,9 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-      <router-link class="ll" to="TodayIssue">오늘의 이슈</router-link>
+      <router-link class="ll" :to="{ name: 'TodayIssue' }"
+        >오늘의 이슈</router-link
+      >
     </li>
 
     <!-- Divider -->
@@ -47,7 +49,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <router-link class="ll" to="MyStock">내 주식</router-link>
+      <router-link class="ll" :to="{ name: 'MyStock' }">내 주식</router-link>
     </li>
 
     <!-- Nav Item - Charts -->
@@ -63,7 +65,7 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item" v-if="this.getLoginState">
       <i class="bi bi-arrow-clockwise"></i>
-      <router-link class="ll" to="/user/update">
+      <router-link class="ll" :to="{ name: 'UserUpdate' }">
         <!-- <b-icon-exclamation-triangle-fill></b-icon-exclamation-triangle-fill>내 -->
         내 정보 수정/탈퇴</router-link
       >
