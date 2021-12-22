@@ -14,7 +14,7 @@
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
 
-                  <router-view></router-view>
+                  <router-view />
 
                   <hr />
                   <div class="text-center">
@@ -36,7 +36,10 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "User",
+  components: {},
+};
 </script>
 
 <style></style>

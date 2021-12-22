@@ -14,13 +14,7 @@
     </div>
     <div class="sidebar-brand-text mx-3">
       <router-link
-        class="
-          homelogo
-          align-items-center
-          justify-content-center
-          sidebar-brand
-          d-flex
-        "
+        class="homelogo align-items-center justify-content-center sidebar-brand d-flex"
         to="/"
       >
         Stock Safe
@@ -62,7 +56,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <router-link class="ll" to="User">내 정보 수정/탈퇴</router-link>
+      <router-link class="ll" to="/user/update">내 정보 수정/탈퇴</router-link>
     </li>
 
     <!-- Divider -->
