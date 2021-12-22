@@ -19,7 +19,7 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <list-table :data="data" :columns="columns" type="myStock">
+          <list-table :data="data1" :columns="columns" type="myStock">
           </list-table>
         </div>
       </div>
@@ -30,14 +30,27 @@
 <script>
 import http from "@/utils/http-common.js";
 // import { mapMutations } from "vuex";
+import { mapGetters } from "vuex";
 
 import ListTable from "@/components/list/ListTable.vue";
 
 export default {
   name: "MyStock",
+  created() {
+    console.log(this.getId);
+    http
+      .get(`/memberstock`, { params: { memberId: this.getId } })
+      .then((res) => {
+        this.data1 = res.data;
+        console.log(res.data);
+      });
+  },
+  computed: {
+    ...mapGetters(["getId"]),
+  },
   data() {
     return {
-      data: [],
+      data1: null,
       // 예측 가격을 3일, 1주일, 1달 단위로 여러개 보여줘도 될것같지만 이건 서버 비용을 고려해봐야
       columns: ["종목명", "현재가격"],
     };
@@ -50,16 +63,6 @@ export default {
     //   { no: 1, name: "삼성전자", price: "1111" },
     //   { no: 2, name: "LG전자", price: "2222" },
     // ];
-
-    http
-      .get("/memberstock", { params: { memberId: "ssafy" } })
-      .then(({ res }) => {
-        this.data = res;
-        console.log(res);
-      })
-      .catch(({ err }) => {
-        alert(err);
-      });
   },
   methods: {},
 };
