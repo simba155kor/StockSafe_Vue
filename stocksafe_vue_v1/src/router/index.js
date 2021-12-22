@@ -4,7 +4,7 @@ import Home from "../views/Home.vue";
 import LikeStock from "../views/LikeStock.vue";
 import MyStock from "../views/MyStock.vue";
 import TodayIssue from "../views/TodayIssue.vue";
-import UserInfo from "../views/UserInfo.vue";
+import User from "../views/User.vue";
 
 Vue.use(VueRouter);
 
@@ -30,9 +30,9 @@ const routes = [
     component: TodayIssue,
   },
   {
-    path: "/userinfo",
-    name: "UserInfo",
-    component: UserInfo,
+    path: "/user",
+    name: "User",
+    component: User,
   },
 
 ];

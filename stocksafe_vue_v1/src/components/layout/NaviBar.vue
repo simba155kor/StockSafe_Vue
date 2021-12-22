@@ -5,15 +5,28 @@
     id="accordionSidebar"
   >
     <!-- Sidebar - Brand -->
-    <a
+    <!-- <a
       class="sidebar-brand d-flex align-items-center justify-content-center"
       href="index.html"
-    >
-      <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
-      </div>
-      <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-    </a>
+    > -->
+    <div class="sidebar-brand-icon rotate-n-15">
+      <i class="fas fa-laugh-wink"></i>
+    </div>
+    <div class="sidebar-brand-text mx-3">
+      <router-link
+        class="
+          homelogo
+          align-items-center
+          justify-content-center
+          sidebar-brand
+          d-flex
+        "
+        to="/"
+      >
+        Stock Safe
+      </router-link>
+    </div>
+    <!-- </a> -->
 
     <!-- Divider -->
     <hr class="sidebar-divider" />
@@ -23,10 +36,7 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link" href="#">
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>오늘의 이슈</span>
-      </a>
+      <router-link class="ll" to="TodayIssue">오늘의 이슈</router-link>
     </li>
 
     <!-- Divider -->
@@ -37,18 +47,12 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link" href="#">
-        <i class="fas fa-fw fa-folder"></i>
-        <span>내 주식</span>
-      </a>
+      <router-link class="ll" to="MyStock">내 주식</router-link>
     </li>
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-      <a class="nav-link" href="charts.html">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>관심주식</span></a
-      >
+      <router-link class="ll" to="LikeStock">관심주식</router-link>
     </li>
 
     <!-- Divider -->
@@ -58,10 +62,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link" href="charts.html">
-        <i class="fas fa-fw fa-folder"></i>
-        <span>내 정보 수정/탈퇴</span>
-      </a>
+      <router-link class="ll" to="User">내 정보 수정/탈퇴</router-link>
     </li>
 
     <!-- Divider -->
@@ -97,4 +98,21 @@
 export default {};
 </script>
 
-<style></style>
+<style>
+.nav-item {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.ll {
+  color: white;
+  margin-left: 16px;
+}
+
+.ll:hover {
+  color: rgb(202, 200, 200);
+  margin-left: 18px;
+  text-decoration: none;
+}
+</style>
