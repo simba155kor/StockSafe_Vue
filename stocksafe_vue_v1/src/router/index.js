@@ -6,6 +6,7 @@ import MyStock from "../views/MyStock.vue";
 import TodayIssue from "../views/TodayIssue.vue";
 import User from "../views/User.vue";
 import UserLogin from "@/components/userinfo/UserLogin.vue";
+import UserUpdate from "@/components/userinfo/UserUpdate.vue";
 
 Vue.use(VueRouter);
 
@@ -40,6 +41,11 @@ const routes = [
         path: "login",
         name: "UserLogin",
         component: UserLogin,
+      },
+      {
+        path: "update",
+        name: "UserUpdate",
+        component: UserUpdate,
       },
     ],
   },
