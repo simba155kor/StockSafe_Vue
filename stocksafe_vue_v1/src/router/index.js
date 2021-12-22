@@ -37,25 +37,25 @@ const routes = [
     path: "/user",
     name: "User",
     component: User,
-    redirect:"/login",
+    redirect:"/user/login",
     children: [
     {
-      path: "/login",
+      path: "login",
       name: "UserLogin",
       component : UserLogin,
       },
       {
-        path: "/update",
+        path: "update",
         name: "UserUpdate",
         component : UserUpdate,
       },
       {
-        path: "/Join",
+        path: "Join",
         name: "UserJoin",
         component : UserJoin,
       },
       {
-        path: "/password",
+        path: "password",
         name: "UserPassword",
         component : UserPassword,
       },
