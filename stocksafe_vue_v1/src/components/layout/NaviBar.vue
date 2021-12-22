@@ -14,13 +14,7 @@
     </div>
     <div class="sidebar-brand-text mx-3">
       <router-link
-        class="
-          homelogo
-          align-items-center
-          justify-content-center
-          sidebar-brand
-          d-flex
-        "
+        class="homelogo align-items-center justify-content-center sidebar-brand d-flex"
         to="/"
       >
         Stock Safe
@@ -59,20 +53,21 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block" />
+    <div v-if="this.getLoginState">
+      <div class="sidebar-heading">내 정보 관리</div>
 
-    <div class="sidebar-heading">내 정보 관리</div>
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <i class="bi bi-arrow-clockwise"></i>
+        <router-link class="ll" :to="{ name: 'UserUpdate' }">
+          <!-- <b-icon-exclamation-triangle-fill></b-icon-exclamation-triangle-fill>내 -->
+          내 정보 수정/탈퇴</router-link
+        >
+      </li>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item" v-if="this.getLoginState">
-      <i class="bi bi-arrow-clockwise"></i>
-      <router-link class="ll" :to="{ name: 'UserUpdate' }">
-        <!-- <b-icon-exclamation-triangle-fill></b-icon-exclamation-triangle-fill>내 -->
-        내 정보 수정/탈퇴</router-link
-      >
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block" />
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block" />
+    </div>
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
