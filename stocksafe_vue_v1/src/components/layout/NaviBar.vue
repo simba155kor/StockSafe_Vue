@@ -14,7 +14,13 @@
     </div>
     <div class="sidebar-brand-text mx-3">
       <router-link
-        class="homelogo align-items-center justify-content-center sidebar-brand d-flex"
+        class="
+          homelogo
+          align-items-center
+          justify-content-center
+          sidebar-brand
+          d-flex
+        "
         to="/"
       >
         Stock Safe
@@ -46,7 +52,7 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-      <router-link class="ll" to="LikeStock">관심주식</router-link>
+      <router-link class="ll" :to="{ name: 'LikeStock' }">관심주식</router-link>
     </li>
 
     <!-- Divider -->
@@ -55,8 +61,12 @@
     <div class="sidebar-heading">내 정보 관리</div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <router-link class="ll" to="/user/update">내 정보 수정/탈퇴</router-link>
+    <li class="nav-item" v-if="this.getLoginState">
+      <i class="bi bi-arrow-clockwise"></i>
+      <router-link class="ll" to="/user/update">
+        <!-- <b-icon-exclamation-triangle-fill></b-icon-exclamation-triangle-fill>내 -->
+        내 정보 수정/탈퇴</router-link
+      >
     </li>
 
     <!-- Divider -->
@@ -68,7 +78,7 @@
     </div>
 
     <!-- Sidebar Message -->
-    <div class="sidebar-card d-none d-lg-flex">
+    <!-- <div class="sidebar-card d-none d-lg-flex">
       <img
         class="sidebar-card-illustration mb-2"
         src="img/undraw_rocket.svg"
@@ -83,13 +93,19 @@
         href="https://startbootstrap.com/theme/sb-admin-pro"
         >Upgrade to Pro!</a
       >
-    </div>
+    </div> -->
   </ul>
   <!-- End of Sidebar -->
 </template>
 
 <script>
-export default {};
+import { mapGetters } from "vuex";
+
+export default {
+  computed: {
+    ...mapGetters(["getLoginState"]),
+  },
+};
 </script>
 
 <style>

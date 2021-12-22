@@ -2,11 +2,12 @@
   <form class="user">
     <div class="form-group">
       <input
-        type="email"
+        type="text"
         class="form-control form-control-user"
         id="exampleInputEmail"
         aria-describedby="emailHelp"
         placeholder="Enter Email Address..."
+        v-model="login_user.id"
       />
     </div>
     <div class="form-group">
@@ -15,6 +16,7 @@
         class="form-control form-control-user"
         id="exampleInputPassword"
         placeholder="Password"
+        v-model="login_user.pw"
       />
     </div>
     <div class="form-group">
@@ -25,7 +27,9 @@
         >
       </div>
     </div>
-    <a href="index.html" class="btn btn-primary btn-user btn-block"> Login </a>
+    <button class="btn btn-primary btn-user btn-block" @click="Login()">
+      Login
+    </button>
     <hr />
     <a href="index.html" class="btn btn-google btn-user btn-block">
       <i class="fab fa-google fa-fw"></i> Login with Google
@@ -37,7 +41,40 @@
 </template>
 
 <script>
-export default {};
+import http from "@/utils/http-common.js";
+import { mapMutations } from "vuex";
+
+export default {
+  data() {
+    return {
+      login_user: { id: "", pw: "" },
+    };
+  },
+  methods: {
+    ...mapMutations(["SET_LOGIN_STATE"]),
+    Login() {
+      console.log(this.login_user);
+
+      http
+        .post(`/member/login`, {
+          id: this.login_user.id,
+          memberPw: this.login_user.pw,
+        })
+        .then(({ data }) => {
+          let msg = "아이디 혹은 비밀번호를 확인해주세요.";
+          if (data.message != "fail") {
+            msg = "로그인 성공";
+            this.SET_LOGIN_STATE({
+              id: this.login_user.id,
+              name: data,
+            });
+            alert(msg);
+            this.$router.push({ name: "Home" });
+          } else alert(msg);
+        });
+    },
+  },
+};
 </script>
 
 <style></style>
