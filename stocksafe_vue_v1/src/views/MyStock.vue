@@ -45,7 +45,7 @@ export default {
   components: {
     ListTable,
   },
-  mounted() {
+  created() {
     // this.data = [
     //   { no: 1, name: "삼성전자", price: "1111" },
     //   { no: 2, name: "LG전자", price: "2222" },
@@ -53,9 +53,8 @@ export default {
 
     http
       .get("/memberstock", { params: { memberId: "ssafy" } })
-      .then(({ res }) => {
-        this.data = res;
-        console.log(res);
+      .then((response) => {
+        this.data = response.data;
       })
       .catch(({ err }) => {
         alert(err);

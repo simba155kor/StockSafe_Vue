@@ -5,11 +5,11 @@
         <!-- <router-link :to="{ name: 'StockDetail', params: { no: no } }">{{
           subject
         }}</router-link> -->
-        {{ name }}
+        {{ memberId }}
       </a>
     </td>
 
-    <td>{{ price }}</td>
+    <td>{{ stockId }}</td>
   </tr>
 </template>
 
@@ -19,9 +19,9 @@ import moment from "moment";
 export default {
   name: "BoardListRow",
   props: {
-    no: Number,
-    name: String,
-    price: String,
+    id: Number,
+    memberId: String,
+    stockId: String,
   },
   computed: {
     changeDateFormat() {
