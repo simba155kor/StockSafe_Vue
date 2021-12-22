@@ -62,8 +62,6 @@ export default {
   methods: {
     ...mapMutations(["SET_LOGIN_STATE"]),
     Login() {
-      console.log(this.login_user);
-
       http
         .post(`/member/login`, {
           id: this.login_user.id,
