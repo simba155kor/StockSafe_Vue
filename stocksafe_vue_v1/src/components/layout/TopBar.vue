@@ -30,20 +30,21 @@
         navbar-search
       "
     >
-      <div class="input-group">
-        <input
-          type="text"
-          class="form-control bg-light border-0 small"
-          placeholder="Search for..."
-          aria-label="Search"
-          aria-describedby="basic-addon2"
-        />
+      <form class="input-group" autocomplete="off">
+        <Dropdown
+          :options="search_list"
+          v-on:selected="validateSelection"
+          v-on:filter="getDropdownValues"
+          :disabled="false"
+          placeholder="검색.."
+        >
+        </Dropdown>
         <div class="input-group-append">
-          <button class="btn btn-primary" type="button">
+          <button class="btn btn-primary" type="button" @click="searching()">
             <i class="fas fa-search fa-sm"></i>
           </button>
         </div>
-      </div>
+      </form>
     </form>
 
     <!-- Topbar Navbar -->
@@ -104,7 +105,7 @@
         <div v-if="this.getLoginState === false">
           <button class="btn btn-primary">
             <router-link
-              to="/user/login"
+              :to="{ name: 'UserLogin' }"
               style="color: white; text-decoration: none"
             >
               로그인</router-link
@@ -129,22 +130,66 @@
 </template>
 
 <script>
+import http from "@/utils/http-common.js";
+
+import Dropdown from "vue-simple-search-dropdown";
 import { mapMutations } from "vuex";
 import { mapGetters } from "vuex";
 
 export default {
   created() {
     console.log(this.getLoginState);
+
+    this.getAlllist();
   },
   computed: {
     ...mapGetters(["getLoginState", "getName"]),
   },
+  components: { Dropdown },
   methods: {
     ...mapMutations(["SET_LOGOUT_STATE"]),
     Logout() {
       alert("로그아웃 합니다.");
       this.SET_LOGOUT_STATE();
     },
+    validateSelection(selection) {
+      this.selected = selection;
+      console.log(selection.name + " has been selected");
+    },
+
+    getDropdownValues(keyword) {
+      console.log(
+        "You could refresh options by querying the API with " + keyword
+      );
+    },
+    getAlllist() {
+      http
+        .get(`/stock/searchAll`, { params: { keyword: "%" } })
+        .then(({ data }) => {
+          console.log(data);
+          data.forEach((element) => {
+            let temp = { id: "", name: "" };
+            temp.id = element.id;
+            temp.name = element.id + "  |  " + element.stockName;
+            this.search_list.push(temp);
+          });
+          console.log(this.search_list);
+        });
+    },
+    searching() {
+      console.log(this.selected);
+      this.$router.push({
+        name: "StockDetail",
+        params: { id: this.selected.id },
+      });
+    },
+  },
+  data() {
+    return {
+      search_list: [],
+
+      selected: { name: null, id: null },
+    };
   },
 };
 </script>

@@ -1,9 +1,14 @@
 <template>
-  <div>todayissue</div>
+  <div>..</div>
 </template>
 
 <script>
-export default {};
+export default {
+  created() {
+    alert("추후 예정..");
+    this.$router.push({ name: "Home" });
+  },
+};
 </script>
 
 <style>

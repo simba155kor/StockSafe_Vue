@@ -43,7 +43,6 @@ const routes = [
     path: "/user",
     name: "User",
     component: User,
-    redirect: "/user/login",
     children: [
       {
         path: "login",
@@ -70,6 +69,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
+  mode:'history',
   routes,
 });
 
