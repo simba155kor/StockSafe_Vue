@@ -5,6 +5,8 @@
       <!-- Page Heading -->
       <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">{{ stockdetailinfo.stockName }}</h1>
+        <i class="bi bi-star"></i>
+        <i class="bi bi-star"></i>
       </div>
 
       <!-- Content Row -->
@@ -21,7 +23,7 @@
                     시장
                   </div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
-                    KOSPI / KOSDAQ / NASDAQ
+                    {{ stockdetailinfo.stockMarket }}
                   </div>
                 </div>
                 <div class="col-auto">
@@ -44,7 +46,7 @@
                     분류
                   </div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
-                    전기전자
+                    {{ stockdetailinfo.stockSector }}
                   </div>
                 </div>
                 <div class="col-auto">
@@ -67,7 +69,7 @@
                     WICS 섹터
                   </div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
-                    반도체어쩌구
+                    {{ stockdetailinfo.stockWics }}
                   </div>
                 </div>
                 <div class="col-auto">
@@ -92,7 +94,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col-auto">
                       <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                        44.3%
+                        {{ stockdetailinfo.stockForeigner }} %
                       </div>
                     </div>
                     <div class="col">
@@ -100,7 +102,7 @@
                         <div
                           class="progress-bar bg-info"
                           role="progressbar"
-                          style="width: 30.3%"
+                          :style="stockForeignerPer"
                           aria-valuenow="50"
                           aria-valuemin="0"
                           aria-valuemax="100"
@@ -171,7 +173,9 @@
               <h6 class="m-0 font-weight-bold text-primary">투자정보</h6>
             </div>
             <!-- Card Body -->
-            <div class="card-body"><stock-table /></div>
+            <div class="card-body">
+              <stock-table :stockdetailinfo1="stockdetailinfo" />
+            </div>
           </div>
         </div>
       </div>
@@ -228,11 +232,11 @@ export default {
   name: "StockDetail",
   data() {
     return {
-      key1: "width : 20%",
-      data: [{ a: "dd", b: "cc" }],
+      data: [],
       newsColumns: ["제목", "날짜"],
       replyColums: ["내용", "날짜"],
-      stockdetailinfo: null,
+      stockdetailinfo: { stockName: "" },
+      stockForeignerPer: "",
     };
   },
   components: { ListTable, StockTable },
@@ -243,6 +247,8 @@ export default {
         .then(({ data }) => {
           this.stockdetailinfo = data;
           console.log(this.stockdetailinfo);
+          this.stockForeignerPer =
+            "width: " + this.stockdetailinfo.stockForeigner + "%";
         });
     },
   },

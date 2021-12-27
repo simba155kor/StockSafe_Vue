@@ -42,18 +42,18 @@
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider" />
+    <hr class="sidebar-divider" v-if="this.getLoginState" />
 
     <!-- Heading -->
-    <div class="sidebar-heading">자산관리</div>
+    <div class="sidebar-heading" v-if="this.getLoginState">자산관리</div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item" v-if="this.getLoginState">
       <router-link class="ll" :to="{ name: 'MyStock' }">내 주식</router-link>
     </li>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
+    <li class="nav-item" v-if="this.getLoginState">
       <router-link class="ll" :to="{ name: 'LikeStock' }">관심주식</router-link>
     </li>
 
