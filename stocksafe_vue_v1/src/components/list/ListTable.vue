@@ -1,10 +1,5 @@
 <template>
-  <table
-    class="table table-bordered"
-    id="dataTable"
-    width="100%"
-    cellspacing="0"
-  >
+  <table class="table" id="dataTable" width="100%" cellspacing="0">
     <thead>
       <tr>
         <th v-for="(column, idx) in columns" :key="idx">{{ column }}</th>
@@ -20,8 +15,8 @@
 </template>
 
 <script>
-import ListRowFive from "./ListRowFive.vue";
 import ListRowTwo from "./ListRowTwo.vue";
+import ListRowFive from "./ListRowFive.vue";
 export default {
   name: "ListTable",
   components: {

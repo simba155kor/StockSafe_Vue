@@ -1,14 +1,10 @@
 <template>
   <tr>
     <td>
-      <a>
-        <!-- <router-link :to="{ name: 'StockDetail', params: { no: no } }">{{
-          subject
-        }}</router-link> -->
-        {{ content }}
-      </a>
+      <a v-if="uri" target="_blank" :href="uri">{{ content }}</a>
+      <a v-if="!uri" target="_blank" :href="uri">{{ content }}</a>
     </td>
-    <td>{{ date }}</td>
+    <td class="text-right">{{ date }}</td>
   </tr>
 </template>
 
@@ -20,6 +16,7 @@ export default {
   props: {
     content: String,
     date: String,
+    uri: String,
   },
   computed: {
     changeDateFormat() {
