@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <!-- Page Heading -->
       <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">샘숭전자</h1>
+        <h1 class="h3 mb-0 text-gray-800">{{ stockdetailinfo.stockName }}</h1>
       </div>
 
       <!-- Content Row -->
@@ -296,23 +296,40 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
+import http from "@/utils/http-common.js";
 
 import ListTable from "@/components/list/ListTable.vue";
 export default {
-  name: "Home",
+  created() {
+    this.getInfo();
+  },
+  name: "StockDetail",
   data() {
     return {
       key1: "width : 20%",
       data: [],
       newsColumns: ["제목", "날짜"],
       replyColums: ["내용", "날짜"],
+      stockdetailinfo: null,
     };
   },
   components: { ListTable },
-  methods: {},
+  methods: {
+    getInfo() {
+      http
+        .get(`/stock`, { params: { id: this.$route.params.id } })
+        .then(({ data }) => {
+          this.stockdetailinfo = data;
+          console.log(this.stockdetailinfo);
+        });
+    },
+  },
   mounted() {},
+  watch: {
+    $route(to, from) {
+      if (to.path !== from.path) this.getInfo();
+    },
+  },
 };
 </script>
 

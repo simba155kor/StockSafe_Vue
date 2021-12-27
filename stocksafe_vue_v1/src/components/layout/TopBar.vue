@@ -178,10 +178,12 @@ export default {
     },
     searching() {
       console.log(this.selected);
-      this.$router.push({
-        name: "StockDetail",
-        params: { id: this.selected.id },
-      });
+      this.$router
+        .push({
+          name: "StockDetail",
+          params: { id: this.selected.id },
+        })
+        .catch(() => {});
     },
   },
   data() {
