@@ -190,7 +190,7 @@
               <h6 class="m-0 font-weight-bold text-primary">뉴스</h6>
             </div>
             <div class="card-body">
-              <list-table :data="data" type="myStock"> </list-table>
+              <list-table :data="newsData" type="two"> </list-table>
             </div>
           </div>
         </div>
@@ -207,8 +207,7 @@
               <h6 class="m-0 font-weight-bold text-primary">댓글</h6>
             </div>
             <div class="card-body">
-              <list-table :data="data" :columns="replyColums" type="myStock">
-              </list-table>
+              <list-table :data="replyData" type="two"> </list-table>
             </div>
           </div>
         </div>
@@ -232,9 +231,22 @@ export default {
   name: "StockDetail",
   data() {
     return {
-      data: [],
-      newsColumns: ["제목", "날짜"],
-      replyColums: ["내용", "날짜"],
+      newsData: [
+        {
+          content: "[Asia마감] 오미크론 경계감에…日·中 동반 하락",
+          date: "2021-08-11",
+          uri: "https://finance.naver.com/news/news_read.naver?mode=mainnews&office_id=008&article_id=0004688550",
+        },
+        {
+          content: "[긴급]어제 밤 청와대 나선 김모씨...충격!",
+          date: "2021-08-12",
+          uri: "https://finance.naver.com/news/news_read.naver?mode=mainnews&office_id=018&article_id=0005114684",
+        },
+      ],
+      replyData: [
+        { content: "8만전자 간다, 존버가 답이다", date: "2021-08-11" },
+        { content: "댓글테스트", date: "2021-08-12" },
+      ],
       stockdetailinfo: { stockName: "" },
       stockForeignerPer: "",
     };
