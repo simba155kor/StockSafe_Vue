@@ -318,9 +318,9 @@ export default {
     },
     addLikeStock() {
       http
-        .post(`/stock`, {
+        .post(`/likestock`, {
           memberId: this.getId,
-          stock_id: this.stockdetailinfo.id,
+          predictId: this.stockdetailinfo.id,
         })
         .then(() => {
           this.star_tag = true;
@@ -329,9 +329,11 @@ export default {
     },
     deleteLikeStock() {
       http
-        .delete(`/stock`, {
-          memberId: this.getId,
-          stock_id: this.stockdetailinfo.id,
+        .delete(`/likestock`, {
+          params: {
+            memberId: this.getId,
+            predictId: this.stockdetailinfo.id,
+          },
         })
         .then(() => {
           this.star_tag = false;
