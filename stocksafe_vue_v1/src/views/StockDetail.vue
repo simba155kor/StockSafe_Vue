@@ -4,9 +4,23 @@
     <div class="container-fluid">
       <!-- Page Heading -->
       <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">{{ stockdetailinfo.stockName }}</h1>
-        <i class="bi bi-star"></i>
-        <i class="bi bi-star"></i>
+        <h1 class="h3 mb-0 text-gray-800">
+          {{ stockdetailinfo.stockName }}
+          <b-icon
+            v-if="!star_tag"
+            class="mb-2 mx-1 staricon1"
+            icon="star"
+            variant="secondary"
+            @click="addLikeStock()"
+          ></b-icon>
+          <b-icon
+            v-else
+            class="mb-2 mx-1 staricon2"
+            icon="star-fill"
+            variant="warning"
+            @click="deleteLikeStock()"
+          ></b-icon>
+        </h1>
       </div>
 
       <!-- Content Row -->
@@ -221,16 +235,25 @@
 
 <script>
 import http from "@/utils/http-common.js";
+import { mapMutations } from "vuex";
+import { mapGetters } from "vuex";
 
 import ListTable from "@/components/list/ListTable.vue";
 import StockTable from "@/components/stock/StockTable.vue";
 export default {
   created() {
+    this.star_tag = false;
+    console.log(this.$route.params.star_tag);
+    if (this.$route.params.star_tag) {
+      this.star_tag = true;
+      this.SET_FALSE_NOW_PAGE_STATE;
+    }
     this.getInfo();
   },
   name: "StockDetail",
   data() {
     return {
+      star_tag: false,
       newsData: [
         {
           content: "[Asia마감] 오미크론 경계감에…日·中 동반 하락",
@@ -252,7 +275,11 @@ export default {
     };
   },
   components: { ListTable, StockTable },
+  computed: {
+    ...mapGetters(["getId"]),
+  },
   methods: {
+    ...mapMutations["SET_FALSE_NOW_PAGE_STATE"],
     getInfo() {
       http
         .get(`/stock`, { params: { id: this.$route.params.id } })
@@ -263,11 +290,41 @@ export default {
             "width: " + this.stockdetailinfo.stockForeigner + "%";
         });
     },
+    addLikeStock() {
+      http
+        .post(`/stock`, {
+          memberId: this.getId,
+          stock_id: this.stockdetailinfo.id,
+        })
+        .then(() => {
+          this.star_tag = true;
+          alert("관심 주식에 등록되었습니다.");
+        });
+    },
+    deleteLikeStock() {
+      http
+        .delete(`/stock`, {
+          memberId: this.getId,
+          stock_id: this.stockdetailinfo.id,
+        })
+        .then(() => {
+          this.star_tag = false;
+          alert("관심 주식에서 삭제되었습니다.");
+        });
+    },
   },
   mounted() {},
   watch: {
     $route(to, from) {
-      if (to.path !== from.path) this.getInfo();
+      if (to.path !== from.path) {
+        this.star_tag = false;
+        console.log(this.$route.params.star_tag);
+        if (this.$route.params.star_tag) {
+          this.star_tag = true;
+          this.SET_FALSE_NOW_PAGE_STATE;
+        }
+        this.getInfo();
+      }
     },
   },
 };
@@ -276,4 +333,13 @@ export default {
 <style>
 @import url("../css/sb-admin-2.css");
 /* @import url("css/sb-admin-2.min.css"); */
+
+.staricon1:hover {
+  cursor: pointer;
+}
+
+.staricon2:hover {
+  opacity: 50%;
+  cursor: pointer;
+}
 </style>

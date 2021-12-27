@@ -65,7 +65,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["SET_LOGIN_STATE"]),
+    ...mapMutations(["SET_LOGIN_STATE", "SET_LIKE_STOCK"]),
     Login() {
       http
         .post(`/member/login`, {
@@ -80,8 +80,24 @@ export default {
               id: this.login_user.id,
               name: data,
             });
+
+            this.GetLikeStock();
             alert(msg);
             this.$router.push({ name: "Home" });
+          } else alert(msg);
+        });
+    },
+
+    GetLikeStock() {
+      http
+        .get(`/likestock`, { params: { memberId: this.login_user.id } })
+        .then(({ data }) => {
+          let msg = "관심주식 불러오기 실패.";
+          console.log("!");
+          console.log(data);
+          if (data != "") {
+            msg = "관심주식 불러오기 성공";
+            this.SET_LIKE_STOCK(data);
           } else alert(msg);
         });
     },
