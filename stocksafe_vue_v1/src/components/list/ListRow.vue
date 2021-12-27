@@ -5,11 +5,14 @@
         <!-- <router-link :to="{ name: 'StockDetail', params: { no: no } }">{{
           subject
         }}</router-link> -->
-        {{ memberId }}
+        {{ stockName }}
       </a>
     </td>
 
-    <td>{{ stockId }}</td>
+    <td>{{ stockYesterday }}</td>
+    <td>{{ predictDay }}</td>
+    <td>{{ predictMonth }}</td>
+    <td>{{ predictYear }}</td>
   </tr>
 </template>
 
@@ -21,7 +24,13 @@ export default {
   props: {
     id: Number,
     memberId: String,
-    stockId: String,
+    predictDay: Number,
+    predictGraph: String,
+    predictId: String,
+    predictMonth: Number,
+    predictYear: Number,
+    stockName: String,
+    stockYesterday: Number,
   },
   computed: {
     changeDateFormat() {

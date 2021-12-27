@@ -29,7 +29,6 @@
 
 <script>
 import http from "@/utils/http-common.js";
-// import { mapMutations } from "vuex";
 import { mapGetters } from "vuex";
 
 import ListTable from "@/components/list/ListTable.vue";
@@ -51,7 +50,13 @@ export default {
     return {
       data: null,
       // 예측 가격을 3일, 1주일, 1달 단위로 여러개 보여줘도 될것같지만 이건 서버 비용을 고려해봐야
-      columns: ["종목명", "현재가격"],
+      columns: [
+        "종목명",
+        "어제 가격",
+        "3일 뒤 예측가",
+        "한달 뒤 예측가",
+        "일년 뒤 예측가",
+      ],
     };
   },
   components: {

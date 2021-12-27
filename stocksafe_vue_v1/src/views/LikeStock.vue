@@ -28,26 +28,37 @@
 </template>
 
 <script>
+import http from "@/utils/http-common.js";
+import { mapGetters } from "vuex";
+
 import ListTable from "@/components/list/ListTable.vue";
 
 export default {
-  name: "MyStock",
+  name: "LikeStock",
   data() {
     return {
       data: [],
       // 예측 가격을 3일, 1주일, 1달 단위로 여러개 보여줘도 될것같지만 이건 서버 비용을 고려해봐야
-      columns: ["종목명", "예측가격"],
+      columns: [
+        "종목명",
+        "어제 가격",
+        "3일 뒤 예측가",
+        "한달 뒤 예측가",
+        "일년 뒤 예측가",
+      ],
     };
   },
   components: {
     ListTable,
   },
-  mounted() {
-    this.data = [
-      { no: 3, name: "카카오", price: "333" },
-      { no: 4, name: "네이버", price: "444" },
-      { no: 5, name: "쿠팡", price: "555" },
-    ];
+  created() {
+    console.log(this.getId);
+    http.get(`/likestock`, { params: { memberId: this.getId } }).then((res) => {
+      this.data = res.data;
+    });
+  },
+  computed: {
+    ...mapGetters(["getId"]),
   },
 };
 </script>
