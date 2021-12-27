@@ -34,6 +34,11 @@
         >오늘의 이슈</router-link
       >
     </li>
+    <li class="nav-item">
+      <router-link class="ll" :to="{ name: 'StockDetail' }"
+        >상세보기</router-link
+      >
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider" />
