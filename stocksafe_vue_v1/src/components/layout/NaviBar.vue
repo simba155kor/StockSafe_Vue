@@ -14,7 +14,13 @@
     </div>
     <div class="sidebar-brand-text mx-3">
       <router-link
-        class="homelogo align-items-center justify-content-center sidebar-brand d-flex"
+        class="
+          homelogo
+          align-items-center
+          justify-content-center
+          sidebar-brand
+          d-flex
+        "
         to="/"
       >
         Stock Safe
@@ -32,11 +38,6 @@
     <li class="nav-item">
       <router-link class="ll" :to="{ name: 'TodayIssue' }"
         >오늘의 이슈</router-link
-      >
-    </li>
-    <li class="nav-item">
-      <router-link class="ll" :to="{ name: 'StockDetail' }"
-        >상세보기</router-link
       >
     </li>
 
