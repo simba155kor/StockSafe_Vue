@@ -143,11 +143,11 @@ export default {
     this.getAlllist();
   },
   computed: {
-    ...mapGetters(["getLoginState", "getName"]),
+    ...mapGetters(["getLoginState", "getName", "getNowPageState"]),
   },
   components: { Dropdown },
   methods: {
-    ...mapMutations(["SET_LOGOUT_STATE"]),
+    ...mapMutations(["SET_LOGOUT_STATE", "SET_TRUE_NOW_PAGE_STATE"]),
     Logout() {
       alert("로그아웃 합니다.");
       this.SET_LOGOUT_STATE();
@@ -177,11 +177,16 @@ export default {
         });
     },
     searching() {
-      console.log(this.selected);
+      this.SET_TRUE_NOW_PAGE_STATE(this.selected.id * 1);
+
+      console.log(this.getNowPageState + ">!>!");
+      var tag = false;
+      if (this.getNowPageState) tag = true;
+
       this.$router
         .push({
           name: "StockDetail",
-          params: { id: this.selected.id },
+          params: { id: this.selected.id, star_tag: tag },
         })
         .catch(() => {});
     },

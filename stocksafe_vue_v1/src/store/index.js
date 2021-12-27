@@ -8,7 +8,10 @@ export default new Vuex.Store({
   state: {
     login_state: false,
     user_id : "",
-    user_name : "",
+    user_name: "",
+    like_stock: {},
+    kospi_like_stock: [],
+    now_page_state : false,
   },
   mutations: {
     SET_LOGIN_STATE(state, data) {
@@ -21,6 +24,27 @@ export default new Vuex.Store({
       state.user_id = null;
       state.user_name = null;
     },
+    SET_LIKE_STOCK(state, data) {
+      var arr = new Array();
+      
+      state.like_stock = data;
+      
+      state.like_stock.forEach(element => {
+        arr[element.predictId*1] = 1;
+      });
+
+      state.kospi_like_stock = arr;
+    },
+    SET_TRUE_NOW_PAGE_STATE(state, num) {
+      if (state.kospi_like_stock[num * 1] == 1) {
+        console.log(">?B");
+        state.now_page_state = true;
+      }
+      else  state.now_page_state = false;
+    },
+    SET_FALSE_NOW_PAGE_STATE(state) {
+      state.now_page_state = false;
+    },
   },
   getters: {
     getLoginState(state) {
@@ -31,9 +55,15 @@ export default new Vuex.Store({
     },
     getId(state) {
       return state.user_id;
-    }
+    },
+    getNowPageState(state) {
+      return state.now_page_state;
+    },
+    
   },
-  actions: {},
+  actions: {
+    
+  },
   modules: {},
   plugins: [createPersistedState()],
 });
