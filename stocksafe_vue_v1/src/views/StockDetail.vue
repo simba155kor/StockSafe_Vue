@@ -186,8 +186,7 @@
               <h6 class="m-0 font-weight-bold text-primary">뉴스</h6>
             </div>
             <div class="card-body">
-              <list-table :data="data" :columns="newsColumns" type="myStock">
-              </list-table>
+              <list-table :data="data" type="myStock"> </list-table>
             </div>
           </div>
         </div>
@@ -230,7 +229,7 @@ export default {
   data() {
     return {
       key1: "width : 20%",
-      data: [],
+      data: [{ a: "dd", b: "cc" }],
       newsColumns: ["제목", "날짜"],
       replyColums: ["내용", "날짜"],
       stockdetailinfo: null,

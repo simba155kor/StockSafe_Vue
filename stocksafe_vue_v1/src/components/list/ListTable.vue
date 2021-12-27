@@ -10,20 +10,23 @@
         <th v-for="(column, idx) in columns" :key="idx">{{ column }}</th>
       </tr>
     </thead>
-    <tbody>
-      <list-row v-for="(item, index) in data" :key="index" v-bind="item" />
+    <tbody v-if="type == 'five'">
+      <list-row-five v-for="(item, index) in data" :key="index" v-bind="item" />
+    </tbody>
+    <tbody v-if="type == 'two'">
+      <list-row-two v-for="(item, index) in data" :key="index" v-bind="item" />
     </tbody>
   </table>
 </template>
 
 <script>
-import ListRow from "./ListRow.vue";
-// import ListRow from "@/components/list/ListRow";
+import ListRowFive from "./ListRowFive.vue";
+import ListRowTwo from "./ListRowTwo.vue";
 export default {
   name: "ListTable",
   components: {
-    ListRow,
-    // ListRow,
+    ListRowFive,
+    ListRowTwo,
   },
   props: {
     data: [],

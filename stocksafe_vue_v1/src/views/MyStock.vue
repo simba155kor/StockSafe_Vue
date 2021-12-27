@@ -19,8 +19,7 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <list-table :data="data" :columns="columns" type="myStock">
-          </list-table>
+          <list-table :data="data" :columns="columns" type="five"> </list-table>
         </div>
       </div>
     </div>
