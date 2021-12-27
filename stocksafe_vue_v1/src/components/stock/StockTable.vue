@@ -1,10 +1,6 @@
 <template>
-  <table
-    class="table table-bordered"
-    id="dataTable"
-    width="100%"
-    cellspacing="0"
-  >
+  <table class="table borderless" id="dataTable" width="100%" cellspacing="0">
+    <span class="border-top-0"></span>
     <tbody>
       <tr>
         <th>시가총액</th>
