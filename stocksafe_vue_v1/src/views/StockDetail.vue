@@ -264,7 +264,7 @@
               <h6 class="m-0 font-weight-bold text-primary">뉴스</h6>
             </div>
             <div class="card-body">
-              <list-table :data="data" :columns="columns" type="myStock">
+              <list-table :data="data" :columns="newsColumns" type="myStock">
               </list-table>
             </div>
           </div>
@@ -282,7 +282,7 @@
               <h6 class="m-0 font-weight-bold text-primary">댓글</h6>
             </div>
             <div class="card-body">
-              <list-table :data="data" :columns="columns" type="myStock">
+              <list-table :data="data" :columns="replyColums" type="myStock">
               </list-table>
             </div>
           </div>
@@ -307,6 +307,7 @@ export default {
       key1: "width : 20%",
       data: [],
       newsColumns: ["제목", "날짜"],
+      replyColums: ["내용", "날짜"],
     };
   },
   components: { ListTable },
