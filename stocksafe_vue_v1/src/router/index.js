@@ -5,10 +5,11 @@ import LikeStock from "../views/LikeStock.vue";
 import MyStock from "../views/MyStock.vue";
 import TodayIssue from "../views/TodayIssue.vue";
 import User from "../views/User.vue";
-import UserLogin from "@/components/userinfo/UserLogin.vue"
-import UserUpdate from "@/components/userinfo/UserUpdate.vue"
-import UserJoin from "@/components/userinfo/UserJoin.vue"
-import UserPassword from "@/components/userinfo/UserPassword.vue"
+import StockDetail from "../views/StockDetail.vue";
+import UserLogin from "@/components/userinfo/UserLogin.vue";
+import UserUpdate from "@/components/userinfo/UserUpdate.vue";
+import UserJoin from "@/components/userinfo/UserJoin.vue";
+import UserPassword from "@/components/userinfo/UserPassword.vue";
 
 Vue.use(VueRouter);
 
@@ -34,32 +35,37 @@ const routes = [
     component: TodayIssue,
   },
   {
+    path: "/detail",
+    name: "StockDetail",
+    component: StockDetail,
+  },
+  {
     path: "/user",
     name: "User",
     component: User,
-    redirect:"/user/login",
+    redirect: "/user/login",
     children: [
-    {
-      path: "login",
-      name: "UserLogin",
-      component : UserLogin,
+      {
+        path: "login",
+        name: "UserLogin",
+        component: UserLogin,
       },
       {
         path: "update",
         name: "UserUpdate",
-        component : UserUpdate,
+        component: UserUpdate,
       },
       {
         path: "Join",
         name: "UserJoin",
-        component : UserJoin,
+        component: UserJoin,
       },
       {
         path: "password",
         name: "UserPassword",
-        component : UserPassword,
+        component: UserPassword,
       },
-  ]
+    ],
   },
 ];
 
