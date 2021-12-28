@@ -26,13 +26,55 @@
               style="width: 100%"
             >
               <h6 class="m-0 font-weight-bold text-primary mr-2">
-                Earnings Overview
+                Today's Stock
               </h6>
             </div>
             <!-- Card Body -->
             <div class="card-body">
-              <div class="chart-area">
+              <div>
                 <!-- <canvas id="myAreaChart"></canvas> -->
+                <div>
+                  <b-carousel
+                    id="carousel-1"
+                    v-model="slide"
+                    :interval="4000"
+                    controls
+                    indicators
+                    background="#ababab"
+                    img-width="1024"
+                    img-height="480"
+                    style="text-shadow: 1px 1px 2px #333"
+                    @sliding-start="onSlideStart"
+                    @sliding-end="onSlideEnd"
+                  >
+                    <!-- Text slides with image -->
+                    <b-carousel-slide
+                      v-for="(item, index) in list1"
+                      :key="index"
+                      :caption="item.caption"
+                      :text="item.text"
+                      :img-src="item.src"
+                    >
+                      <h1>{{ item.head }}</h1></b-carousel-slide
+                    >
+                    <!-- Slides with img slot -->
+                    <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
+
+                    <!-- Slide with blank fluid image to maintain slide aspect ratio -->
+                    <b-carousel-slide
+                      caption="Blank Image"
+                      img-blank
+                      img-alt="Blank image"
+                    >
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse eros felis, tincidunt a tincidunt eget,
+                        convallis vel est. Ut pellentesque ut lacus vel
+                        interdum.
+                      </p>
+                    </b-carousel-slide>
+                  </b-carousel>
+                </div>
               </div>
             </div>
           </div>
@@ -52,11 +94,46 @@ export default {
   name: "Home",
   data() {
     return {
+      list1: [
+        {
+          caption: "caption1",
+          text: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
+          src: "https://picsum.photos/1024/480/?image=52",
+          head: "Hello world!",
+        },
+        {
+          caption: "caption2",
+          text: "hhhhhhum.",
+          src: "https://picsum.photos/1024/480/?image=54",
+          head: "Hello world!2",
+        },
+        {
+          caption: "caption3",
+          text: "aaaaaaaaanterdum.",
+          src: "https://picsum.photos/1024/480/?image=58",
+          head: "Hello world!3",
+        },
+        {
+          caption: "Blank Image",
+          text: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
+          src: "https://picsum.photos/1024/480/?image=58",
+          head: "Hello world!3",
+        },
+      ],
+      slide: 0,
+      sliding: null,
       key1: "width : 20%",
     };
   },
   components: {},
-  methods: {},
+  methods: {
+    onSlideStart() {
+      this.sliding = true;
+    },
+    onSlideEnd() {
+      this.sliding = false;
+    },
+  },
   mounted() {},
 };
 </script>

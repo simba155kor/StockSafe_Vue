@@ -1,10 +1,11 @@
 <template>
   <tr>
     <div v-if="newsTitle">
-      <td>
+      <td class="col-8">
         <a target="_blank" :href="newsUri">{{ newsTitle }}</a>
       </td>
-      <td class="text-right">{{ newsDate }}</td>
+      <td class="col-4"></td>
+      <td class="col-2">{{ newsDate }}</td>
     </div>
 
     <div v-if="replyContent">
