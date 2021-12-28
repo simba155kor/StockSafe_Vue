@@ -358,6 +358,8 @@ export default {
         .get(`/reply`, { params: { stockId: this.stockdetailinfo.id } })
         .then(({ data }) => {
           this.replyData = data;
+        });
+    },
     addMyStock() {
       http
         .post(`/memberstock`, {
