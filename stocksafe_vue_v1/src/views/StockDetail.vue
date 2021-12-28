@@ -242,10 +242,12 @@
                   style="resize: none; width: 90%; float: left"
                   rows="3"
                   id="comment"
+                  v-model="comment"
                 ></textarea>
                 <button
                   class="btn btn-primary"
                   style="width: 10%; height: 86px; float: left"
+                  @click="addReply()"
                 >
                   입력
                 </button>
@@ -296,6 +298,7 @@ export default {
       replyData: [],
       stockdetailinfo: { stockName: "" },
       stockForeignerPer: "",
+      comment: "",
     };
   },
   components: { ListTable, StockTable },
@@ -384,6 +387,22 @@ export default {
           this.myStock_tag = false;
           this.SET_INDEX_MY_STOCK(this.stockdetailinfo.id);
           alert("내 주식에서 삭제되었습니다.");
+        });
+    },
+    addReply() {
+      // 대댓아닌 경우에 해당
+      console.log(this.getId);
+      console.log(this.comment);
+      http
+        .post("/reply", {
+          memberId: this.getId,
+          stockId: this.stockdetailinfo.id,
+          replyContent: this.comment,
+          replyLevel: 0,
+        })
+        .then(() => {
+          this.comment = "";
+          this.getReplys();
         });
     },
   },
