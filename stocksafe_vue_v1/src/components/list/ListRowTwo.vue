@@ -8,7 +8,7 @@
     </div>
 
     <div v-if="replyContent">
-      <td class="col-xl-8">
+      <td>
         <div v-if="replyContent">{{ replyContent }}</div>
       </td>
       <td class="text-right col-4">{{ replyRegdate }}</td>
