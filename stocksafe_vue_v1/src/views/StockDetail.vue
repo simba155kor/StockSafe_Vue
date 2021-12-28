@@ -20,6 +20,21 @@
             variant="warning"
             @click="deleteLikeStock()"
           ></b-icon>
+
+          <b-icon
+            v-if="!myStock_tag"
+            class="mb-2 mx-1 staricon2"
+            icon="bag"
+            variant="secondary"
+            @click="addMyStock()"
+          ></b-icon>
+          <b-icon
+            v-else
+            class="mb-2 mx-1 staricon2"
+            icon="bag-fill"
+            variant="info"
+            @click="deleteMyStock()"
+          ></b-icon>
         </h1>
       </div>
 
@@ -221,6 +236,20 @@
               <h6 class="m-0 font-weight-bold text-primary">댓글</h6>
             </div>
             <div class="card-body">
+              <div class="form-group">
+                <textarea
+                  class="form-control"
+                  style="resize: none; width: 90%; float: left"
+                  rows="3"
+                  id="comment"
+                ></textarea>
+                <button
+                  class="btn btn-primary"
+                  style="width: 10%; height: 86px; float: left"
+                >
+                  입력
+                </button>
+              </div>
               <list-table :data="replyData" type="two"> </list-table>
             </div>
           </div>
@@ -246,14 +275,23 @@ export default {
     console.log(this.$route.params.star_tag);
     if (this.$route.params.star_tag) {
       this.star_tag = true;
-      this.SET_FALSE_NOW_PAGE_STATE;
     }
+
+    this.myStock_tag = false;
+    console.log(this.$route.params.myStock_tag);
+    if (this.$route.params.myStock_tag) {
+      this.myStock_tag = true;
+    }
+
+    this.SET_FALSE_NOW_PAGE_STATE;
+
     this.getInfo();
   },
   name: "StockDetail",
   data() {
     return {
       star_tag: false,
+      myStock_tag: false,
       newsData: [],
       replyData: [],
       stockdetailinfo: { stockName: "" },
@@ -265,7 +303,11 @@ export default {
     ...mapGetters(["getId"]),
   },
   methods: {
-    ...mapMutations["SET_FALSE_NOW_PAGE_STATE"],
+    ...mapMutations([
+      "SET_FALSE_NOW_PAGE_STATE",
+      "SET_INDEX_LIKE_STOCK",
+      "SET_INDEX_MY_STOCK",
+    ]),
     getInfo() {
       http
         .get(`/stock`, { params: { id: this.$route.params.id } })
@@ -280,23 +322,27 @@ export default {
     },
     addLikeStock() {
       http
-        .post(`/stock`, {
+        .post(`/likestock`, {
           memberId: this.getId,
-          stock_id: this.stockdetailinfo.id,
+          predictId: this.stockdetailinfo.id,
         })
         .then(() => {
           this.star_tag = true;
+          this.SET_INDEX_LIKE_STOCK(this.stockdetailinfo.id);
           alert("관심 주식에 등록되었습니다.");
         });
     },
     deleteLikeStock() {
       http
-        .delete(`/stock`, {
-          memberId: this.getId,
-          stock_id: this.stockdetailinfo.id,
+        .delete(`/likestock`, {
+          params: {
+            memberId: this.getId,
+            predictId: this.stockdetailinfo.id,
+          },
         })
         .then(() => {
           this.star_tag = false;
+          this.SET_INDEX_LIKE_STOCK(this.stockdetailinfo.id);
           alert("관심 주식에서 삭제되었습니다.");
         });
     },
@@ -312,6 +358,30 @@ export default {
         .get(`/reply`, { params: { stockId: this.stockdetailinfo.id } })
         .then(({ data }) => {
           this.replyData = data;
+    addMyStock() {
+      http
+        .post(`/memberstock`, {
+          memberId: this.getId,
+          predictId: this.stockdetailinfo.id,
+        })
+        .then(() => {
+          this.myStock_tag = true;
+          this.SET_INDEX_MY_STOCK(this.stockdetailinfo.id);
+          alert("내 주식에 등록되었습니다.");
+        });
+    },
+    deleteMyStock() {
+      http
+        .delete(`/memberstock`, {
+          params: {
+            memberId: this.getId,
+            predictId: this.stockdetailinfo.id,
+          },
+        })
+        .then(() => {
+          this.myStock_tag = false;
+          this.SET_INDEX_MY_STOCK(this.stockdetailinfo.id);
+          alert("내 주식에서 삭제되었습니다.");
         });
     },
   },
@@ -323,8 +393,15 @@ export default {
         console.log(this.$route.params.star_tag);
         if (this.$route.params.star_tag) {
           this.star_tag = true;
-          this.SET_FALSE_NOW_PAGE_STATE;
         }
+
+        this.myStock_tag = false;
+        console.log(this.$route.params.myStock_tag);
+        if (this.$route.params.myStock_tag) {
+          this.myStock_tag = true;
+        }
+
+        this.SET_FALSE_NOW_PAGE_STATE;
         this.getInfo();
       }
     },

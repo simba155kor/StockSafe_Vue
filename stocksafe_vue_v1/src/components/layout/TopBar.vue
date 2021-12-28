@@ -143,7 +143,12 @@ export default {
     this.getAlllist();
   },
   computed: {
-    ...mapGetters(["getLoginState", "getName", "getNowPageState"]),
+    ...mapGetters([
+      "getLoginState",
+      "getName",
+      "getNowPageStateLike",
+      "getNowPageStateMy",
+    ]),
   },
   components: { Dropdown },
   methods: {
@@ -179,14 +184,20 @@ export default {
     searching() {
       this.SET_TRUE_NOW_PAGE_STATE(this.selected.id * 1);
 
-      console.log(this.getNowPageState + ">!>!");
-      var tag = false;
-      if (this.getNowPageState) tag = true;
+      var tag_like = false;
+      if (this.getNowPageStateLike) tag_like = true;
+
+      var tag_my = false;
+      if (this.getNowPageStateMy) tag_my = true;
 
       this.$router
         .push({
           name: "StockDetail",
-          params: { id: this.selected.id, star_tag: tag },
+          params: {
+            id: this.selected.id,
+            star_tag: tag_like,
+            myStock_tag: tag_my,
+          },
         })
         .catch(() => {});
     },
