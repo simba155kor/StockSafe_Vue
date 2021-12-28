@@ -254,22 +254,8 @@ export default {
   data() {
     return {
       star_tag: false,
-      newsData: [
-        {
-          content: "[Asia마감] 오미크론 경계감에…日·中 동반 하락",
-          date: "2021-08-11",
-          uri: "https://finance.naver.com/news/news_read.naver?mode=mainnews&office_id=008&article_id=0004688550",
-        },
-        {
-          content: "[긴급]어제 밤 청와대 나선 김모씨...충격!",
-          date: "2021-08-12",
-          uri: "https://finance.naver.com/news/news_read.naver?mode=mainnews&office_id=018&article_id=0005114684",
-        },
-      ],
-      replyData: [
-        { content: "8만전자 간다, 존버가 답이다", date: "2021-08-11" },
-        { content: "댓글테스트", date: "2021-08-12" },
-      ],
+      newsData: [],
+      replyData: [],
       stockdetailinfo: { stockName: "" },
       stockForeignerPer: "",
     };
@@ -288,6 +274,8 @@ export default {
           console.log(this.stockdetailinfo);
           this.stockForeignerPer =
             "width: " + this.stockdetailinfo.stockForeigner + "%";
+          this.getNews();
+          this.getReplys();
         });
     },
     addLikeStock() {
@@ -310,6 +298,20 @@ export default {
         .then(() => {
           this.star_tag = false;
           alert("관심 주식에서 삭제되었습니다.");
+        });
+    },
+    getNews() {
+      http
+        .get(`/news`, { params: { stockId: this.stockdetailinfo.id } })
+        .then(({ data }) => {
+          this.newsData = data;
+        });
+    },
+    getReplys() {
+      http
+        .get(`/reply`, { params: { stockId: this.stockdetailinfo.id } })
+        .then(({ data }) => {
+          this.replyData = data;
         });
     },
   },

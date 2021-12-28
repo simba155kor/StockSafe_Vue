@@ -1,10 +1,18 @@
 <template>
   <tr>
-    <td>
-      <a v-if="uri" target="_blank" :href="uri">{{ content }}</a>
-      <a v-if="!uri" target="_blank" :href="uri">{{ content }}</a>
-    </td>
-    <td class="text-right">{{ date }}</td>
+    <div v-if="newsTitle">
+      <td>
+        <a target="_blank" :href="newsUri">{{ newsTitle }}</a>
+      </td>
+      <td class="text-right">{{ newsDate }}</td>
+    </div>
+
+    <div v-if="replyContent">
+      <td class="col-xl-8">
+        <div v-if="replyContent">{{ replyContent }}</div>
+      </td>
+      <td class="text-right col-4">{{ replyRegdate }}</td>
+    </div>
   </tr>
 </template>
 
@@ -14,9 +22,12 @@ import moment from "moment";
 export default {
   name: "BoardListRow",
   props: {
-    content: String,
-    date: String,
-    uri: String,
+    newsDate: String,
+    newsTitle: String,
+    newsUri: String,
+
+    replyContent: String,
+    replyRegdate: String,
   },
   computed: {
     changeDateFormat() {

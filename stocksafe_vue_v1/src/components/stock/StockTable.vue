@@ -4,28 +4,28 @@
     <tbody>
       <tr>
         <th>시가총액</th>
-        <td>{{ stockdetailinfo1.stockMarketcap }}</td>
+        <td class="text-right">{{ stockdetailinfo1.stockMarketcap }}원</td>
       </tr>
 
       <tr>
         <th>상장주식수</th>
-        <td>{{ stockdetailinfo1.stockCount }}</td>
+        <td class="text-right">{{ stockdetailinfo1.stockCount }}주</td>
       </tr>
       <tr>
         <th>PER</th>
-        <td>{{ stockdetailinfo1.stockPer }}</td>
+        <td class="text-right">{{ stockdetailinfo1.stockPer }}</td>
       </tr>
       <tr>
         <th>PBR</th>
-        <td>{{ stockdetailinfo1.stockPbr }}</td>
+        <td class="text-right">{{ stockdetailinfo1.stockPbr }}</td>
       </tr>
       <tr>
         <th>BPS</th>
-        <td>{{ stockdetailinfo1.stockBps }}</td>
+        <td class="text-right">{{ stockdetailinfo1.stockBps }}</td>
       </tr>
       <tr>
         <th>배당수익률</th>
-        <td>{{ stockdetailinfo1.stockDivyield }}</td>
+        <td class="text-right">{{ stockdetailinfo1.stockDivyield }}</td>
       </tr>
     </tbody>
   </table>
