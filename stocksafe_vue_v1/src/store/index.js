@@ -11,7 +11,10 @@ export default new Vuex.Store({
     user_name: "",
     like_stock: {},
     kospi_like_stock: [],
-    now_page_state : false,
+    my_stock: {},
+    kospi_my_stock:[],
+    now_page_state_like: false,
+    now_page_state_my: false,
   },
   mutations: {
     SET_LOGIN_STATE(state, data) {
@@ -35,16 +38,47 @@ export default new Vuex.Store({
 
       state.kospi_like_stock = arr;
     },
+    SET_MY_STOCK(state, data) {
+      var arr = new Array();
+      
+      state.my_stock = data;
+      
+      state.my_stock.forEach(element => {
+        arr[element.predictId*1] = 1;
+      });
+
+      state.kospi_my_stock = arr;
+    },
     SET_TRUE_NOW_PAGE_STATE(state, num) {
+
       if (state.kospi_like_stock[num * 1] == 1) {
-        console.log(">?B");
-        state.now_page_state = true;
+        state.now_page_state_like = true;
       }
-      else  state.now_page_state = false;
+      else state.now_page_state_like = false;
+      
+      if (state.kospi_my_stock[num * 1] == 1) {
+        state.now_page_state_my = true;
+      }
+      else state.now_page_state_my = false;
+      
     },
     SET_FALSE_NOW_PAGE_STATE(state) {
-      state.now_page_state = false;
+      state.now_page_state_like = false;
+      state.now_page_state_my = false;
     },
+    SET_INDEX_LIKE_STOCK(state, num) {
+      if (state.kospi_like_stock[num * 1] == 1) {
+        state.kospi_like_stock[num * 1] = 0;
+      }
+      else state.kospi_like_stock[num * 1] = 1;
+    },
+    SET_INDEX_MY_STOCK(state, num) {
+      if (state.kospi_my_stock[num * 1] == 1) {
+        state.kospi_my_stock[num * 1] = 0;
+      }
+      else state.kospi_my_stock[num * 1] = 1;
+    },
+    
   },
   getters: {
     getLoginState(state) {
@@ -56,8 +90,11 @@ export default new Vuex.Store({
     getId(state) {
       return state.user_id;
     },
-    getNowPageState(state) {
-      return state.now_page_state;
+    getNowPageStateLike(state) {
+      return state.now_page_state_like;
+    },
+    getNowPageStateMy(state) {
+      return state.now_page_state_my;
     },
     
   },

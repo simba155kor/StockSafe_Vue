@@ -65,7 +65,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["SET_LOGIN_STATE", "SET_LIKE_STOCK"]),
+    ...mapMutations(["SET_LOGIN_STATE", "SET_LIKE_STOCK", "SET_MY_STOCK"]),
     Login() {
       http
         .post(`/member/login`, {
@@ -82,6 +82,7 @@ export default {
             });
 
             this.GetLikeStock();
+            this.GetMyStock();
             alert(msg);
             this.$router.push({ name: "Home" });
           } else alert(msg);
@@ -98,6 +99,17 @@ export default {
           if (data != "") {
             msg = "관심주식 불러오기 성공";
             this.SET_LIKE_STOCK(data);
+          } else alert(msg);
+        });
+    },
+    GetMyStock() {
+      http
+        .get(`/memberstock`, { params: { memberId: this.login_user.id } })
+        .then(({ data }) => {
+          let msg = "내주식 불러오기 실패.";
+          if (data != "") {
+            msg = "내주식 불러오기 성공";
+            this.SET_MY_STOCK(data);
           } else alert(msg);
         });
     },
