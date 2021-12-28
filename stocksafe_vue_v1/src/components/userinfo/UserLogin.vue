@@ -96,7 +96,7 @@ export default {
           let msg = "관심주식 불러오기 실패.";
           console.log("!");
           console.log(data);
-          if (data != "") {
+          if (data != "xx") {
             msg = "관심주식 불러오기 성공";
             this.SET_LIKE_STOCK(data);
           } else alert(msg);
@@ -107,7 +107,7 @@ export default {
         .get(`/memberstock`, { params: { memberId: this.login_user.id } })
         .then(({ data }) => {
           let msg = "내주식 불러오기 실패.";
-          if (data != "") {
+          if (data != "xx") {
             msg = "내주식 불러오기 성공";
             this.SET_MY_STOCK(data);
           } else alert(msg);
