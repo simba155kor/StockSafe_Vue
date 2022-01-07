@@ -40,7 +40,7 @@ const routes = [
     component: StockDetail,
   },
   {
-    path: "/user",
+    path: "/member",
     name: "User",
     component: User,
     children: [

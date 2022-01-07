@@ -67,12 +67,16 @@ export default {
   methods: {
     ...mapMutations(["SET_LOGIN_STATE", "SET_LIKE_STOCK", "SET_MY_STOCK"]),
     Login() {
+      console.log("?");
       http
         .post(`/member/login`, {
           id: this.login_user.id,
           memberPw: this.login_user.pw,
         })
         .then(({ data }) => {
+          console.log("!");
+          console.log(data);
+          console.log("!");
           let msg = "아이디 혹은 비밀번호를 확인해주세요.";
           if (data != "") {
             msg = "로그인 성공";
