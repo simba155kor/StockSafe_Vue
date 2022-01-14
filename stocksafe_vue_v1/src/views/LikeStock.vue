@@ -54,6 +54,7 @@ export default {
     console.log(this.getId);
     http.get(`/likestock`, { params: { memberId: this.getId } }).then((res) => {
       this.data = res.data;
+      console.log(this.data);
     });
   },
   computed: {

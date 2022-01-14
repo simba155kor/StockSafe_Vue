@@ -6,6 +6,7 @@ import MyStock from "../views/MyStock.vue";
 import TodayIssue from "../views/TodayIssue.vue";
 import User from "../views/User.vue";
 import StockDetail from "../views/StockDetail.vue";
+import Popup from "../views/Popup.vue";
 import UserLogin from "@/components/userinfo/UserLogin.vue";
 import UserUpdate from "@/components/userinfo/UserUpdate.vue";
 import UserJoin from "@/components/userinfo/UserJoin.vue";
@@ -38,6 +39,11 @@ const routes = [
     path: "/detail/:id",
     name: "StockDetail",
     component: StockDetail,
+  },
+  {
+    path: "/popup",
+    name: "Popup",
+    component: Popup,
   },
   {
     path: "/member",

@@ -315,6 +315,8 @@ export default {
       http
         .get(`/stock`, { params: { id: this.$route.params.id } })
         .then(({ data }) => {
+          console.log(data);
+          console.log(">>");
           this.stockdetailinfo = data;
           console.log(this.stockdetailinfo);
           this.stockForeignerPer =

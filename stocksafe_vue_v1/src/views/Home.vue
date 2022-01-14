@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <!-- Begin Page Content -->
     <div class="container-fluid">
       <!-- Page Heading -->
@@ -92,6 +93,9 @@
 
 export default {
   name: "Home",
+  created(){
+    this.openWindowPop();
+  },
   data() {
     return {
       list1: [
@@ -132,6 +136,10 @@ export default {
     },
     onSlideEnd() {
       this.sliding = false;
+    },
+    openWindowPop(){
+      var options = 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no';
+      window.open("/popup", "popup", options);
     },
   },
   mounted() {},
