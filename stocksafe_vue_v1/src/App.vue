@@ -25,7 +25,7 @@
 import NaviBar from "./components/layout/NaviBar.vue";
 import TopBar from "./components/layout/TopBar.vue";
 import FooterBar from "./components/layout/Footer.vue";
-//
+
 export default {
   components: {
     NaviBar,
