@@ -3,11 +3,6 @@
     <span class="border-top-0"></span>
     <tbody>
       <tr>
-        <th>시장</th>
-        <td class="text-right">{{ stockdetailinfo.stockMarket }}</td>
-      </tr>
-
-      <tr>
         <th>시가총액</th>
         <td class="text-right">{{ stockdetailinfo.stockMarketcap }}원</td>
       </tr>
