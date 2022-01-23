@@ -192,14 +192,14 @@
                   <div class="col-8">
                     <div class="row">
                       <div class="col-6 row">
-                      <div class="h5 font-weight-bold text-gray-800 mr-5" style="flex:center"> 고가 </div>
-                      <div class="row" style="font-size:15pt">{{priceData.high.toLocaleString()}} 
+                      <div class="h5 font-weight-bold text-gray-800 mr-5" style="margin-top: 5px;"> 고가 </div>
+                      <div class="row" style="font-size:15pt">{{priceData.high}} 
                         <div class="ml-2" style="font-size:5pt; margin-top:10px">(원)</div>
                         </div>
                       </div>
                       <div class="col-6 row">
-                      <div class="h5 font-weight-bold text-gray-800 mr-5"> 종가 </div>
-                      <div class="row" style="font-size:15pt">{{priceData.prevClose.toLocaleString()}} 
+                      <div class="h5 font-weight-bold text-gray-800 mr-5" style="margin-top: 5px;"> 종가 </div>
+                      <div class="row" style="font-size:15pt">{{priceData.prevClose}} 
                         <div class="ml-2" style="font-size:5pt; margin-top:10px">(원)</div>
                         </div>
                       </div>
@@ -207,14 +207,14 @@
                     <hr />
                     <div class="row">
                       <div class="col-6 row">
-                      <div class="h5 font-weight-bold text-gray-800 mr-5"> 저가 </div>
-                      <div class="row" style="font-size:15pt">{{priceData.low.toLocaleString()}} 
+                      <div class="h5 font-weight-bold text-gray-800 mr-5" style="margin-top: 5px;"> 저가 </div>
+                      <div class="row" style="font-size:15pt">{{priceData.low}} 
                         <div class="ml-2" style="font-size:5pt; margin-top:10px">(원)</div>
                         </div>
                       </div>
                       <div class="col-6 row">
-                      <div class="h5 font-weight-bold text-gray-800 mr-5"> 시가 </div>
-                      <div class="row" style="font-size:15pt">{{priceData.open.toLocaleString()}} 
+                      <div class="h5 font-weight-bold text-gray-800 mr-5" style="margin-top: 5px;"> 시가 </div>
+                      <div class="row" style="font-size:15pt">{{priceData.open}} 
                         <div class="ml-2" style="font-size:5pt; margin-top:10px">(원)</div>
                         </div>
                       </div>
@@ -417,6 +417,15 @@ export default {
           this.priceData = data;
           
           this.priceDiff = this.priceData.now - this.priceData.prevClose;
+          this.priceDiff = this.priceDiff.toLocaleString();
+          
+          this.priceData.open = this.priceData.open.toLocaleString();
+          this.priceData.prevClose = this.priceData.prevClose.toLocaleString();
+          this.priceData.now = this.priceData.now.toLocaleString();
+          this.priceData.high = this.priceData.high.toLocaleString();
+          this.priceData.low = this.priceData.low.toLocaleString();
+
+         
           
         });
     },
