@@ -35,6 +35,7 @@
             variant="info"
             @click="deleteMyStock()"
           ></b-icon>
+
         </h1>
       </div>
 
@@ -148,7 +149,7 @@
           </div>
         </div>
       </div>
-      <div class= "row">
+      <div class="row">
         <div class="col-xl-8 col-lg-7">
           <!-- 가격 Chart -->
           <div>
@@ -157,9 +158,15 @@
               <div
                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
               >
-                <h6 class="m-0 font-weight-bold text-primary">
-                  가격요약
-                </h6>
+                <h6 class="m-0 font-weight-bold text-primary">가격요약 
+                  <b-icon
+            class="staricon2"
+            icon="arrow-clockwise"
+            variant="secondary"
+            @click="deleteMyStock()"
+            style="font-size: 18px;"
+          ></b-icon></h6>
+                
                 <div class="dropdown no-arrow">
                   <a
                     class="dropdown-toggle"
@@ -186,7 +193,37 @@
               </div>
               <!-- Card Body -->
               <div class="card-body">
-                
+                <div class="row">
+                  <div class="col-4" style="text-align: center">
+                    <div>현재가</div>
+                    <div>16000</div>
+                  </div>
+
+                  <div></div>
+                  <div class="col-8">
+                    <div class="row">
+                      <div>
+                    고가
+                    </div>
+                    <div style="margin-left:3px"> 15000 </div>
+                    <div>
+                    종가
+                    </div>
+                    <div> 15000 </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div>
+                    저가
+                    </div>
+                    <div style="margin-left:3px"> 15000 </div>
+                    <div>
+                    시가
+                    </div>
+                    <div> 15000 </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -363,7 +400,7 @@ export default {
           console.log(this.stockdetailinfo);
           this.stockForeignerPer =
             "width: " + this.stockdetailinfo.stockForeigner + "%";
-            
+
           this.getNews();
           this.getReplys();
         });
