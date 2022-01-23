@@ -166,6 +166,7 @@
                     @click="getPrice()"
                     style="font-size: 21px"
                   ></b-icon>
+                  <span class="text-gray-600 ml-1" style="font-size:9pt">( {{nowTime}} 갱신)</span>
                 </h6>
                 <!-- <div>
                   <button class="btn btn-primary">새로고침</button>
@@ -191,15 +192,15 @@
                   <div class="col-8">
                     <div class="row">
                       <div class="col-6 row">
-                      <div class="h5 font-weight-bold text-gray-800 mr-5"> 고가 </div>
-                      <div class="row">{{priceData.high.toLocaleString()}} 
-                        <div class="ml-2" style="font-size:5pt; margin-top:6px">(원)</div>
+                      <div class="h5 font-weight-bold text-gray-800 mr-5" style="flex:center"> 고가 </div>
+                      <div class="row" style="font-size:15pt">{{priceData.high.toLocaleString()}} 
+                        <div class="ml-2" style="font-size:5pt; margin-top:10px">(원)</div>
                         </div>
                       </div>
                       <div class="col-6 row">
                       <div class="h5 font-weight-bold text-gray-800 mr-5"> 종가 </div>
-                      <div class="row">{{priceData.prevClose.toLocaleString()}} 
-                        <div class="ml-2" style="font-size:5pt; margin-top:6px">(원)</div>
+                      <div class="row" style="font-size:15pt">{{priceData.prevClose.toLocaleString()}} 
+                        <div class="ml-2" style="font-size:5pt; margin-top:10px">(원)</div>
                         </div>
                       </div>
                     </div>
@@ -207,11 +208,15 @@
                     <div class="row">
                       <div class="col-6 row">
                       <div class="h5 font-weight-bold text-gray-800 mr-5"> 저가 </div>
-                      <div style="margin-left: 3px">{{priceData.low.toLocaleString()}} (원)</div>
+                      <div class="row" style="font-size:15pt">{{priceData.low.toLocaleString()}} 
+                        <div class="ml-2" style="font-size:5pt; margin-top:10px">(원)</div>
+                        </div>
                       </div>
                       <div class="col-6 row">
                       <div class="h5 font-weight-bold text-gray-800 mr-5"> 시가 </div>
-                      <div>{{priceData.open.toLocaleString()}} (원)</div>
+                      <div class="row" style="font-size:15pt">{{priceData.open.toLocaleString()}} 
+                        <div class="ml-2" style="font-size:5pt; margin-top:10px">(원)</div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -372,6 +377,7 @@ export default {
       comment: "",
       priceData: {},
       priceDiff : "",
+      nowTime:"",
     };
   },
   components: { ListTable, StockTable },
@@ -401,6 +407,8 @@ export default {
         });
     },
     getPrice(){
+      let today = new Date();
+      this.nowTime = today.toLocaleString();
       http
         .get(`/stock/price`, { params: { id: this.$route.params.id } })
         .then(({ data }) => {
