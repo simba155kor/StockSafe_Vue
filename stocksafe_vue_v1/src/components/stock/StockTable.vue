@@ -3,29 +3,34 @@
     <span class="border-top-0"></span>
     <tbody>
       <tr>
+        <th>시장</th>
+        <td class="text-right">{{ stockdetailinfo.stockMarket }}</td>
+      </tr>
+
+      <tr>
         <th>시가총액</th>
-        <td class="text-right">{{ stockdetailinfo1.stockMarketcap }}원</td>
+        <td class="text-right">{{ stockdetailinfo.stockMarketcap }}원</td>
       </tr>
 
       <tr>
         <th>상장주식수</th>
-        <td class="text-right">{{ stockdetailinfo1.stockCount }}주</td>
+        <td class="text-right">{{ stockdetailinfo.stockCount }}주</td>
       </tr>
       <tr>
         <th>PER</th>
-        <td class="text-right">{{ stockdetailinfo1.stockPer }}</td>
+        <td class="text-right">{{ stockdetailinfo.stockPer }}</td>
       </tr>
       <tr>
         <th>PBR</th>
-        <td class="text-right">{{ stockdetailinfo1.stockPbr }}</td>
+        <td class="text-right">{{ stockdetailinfo.stockPbr }}</td>
       </tr>
       <tr>
         <th>BPS</th>
-        <td class="text-right">{{ stockdetailinfo1.stockBps }}</td>
+        <td class="text-right">{{ stockdetailinfo.stockBps }}</td>
       </tr>
       <tr>
         <th>배당수익률</th>
-        <td class="text-right">{{ stockdetailinfo1.stockDivyield }}</td>
+        <td class="text-right">{{ stockdetailinfo.stockDivyield }}</td>
       </tr>
     </tbody>
   </table>
@@ -39,7 +44,7 @@ export default {
     data: [],
     columns: [],
     type: String,
-    stockdetailinfo1: {},
+    stockdetailinfo: {},
   },
   data() {
     return {
