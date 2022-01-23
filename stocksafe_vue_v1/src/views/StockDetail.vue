@@ -163,7 +163,7 @@
                     class="staricon2"
                     icon="arrow-clockwise"
                     variant="secondary"
-                    @click="deleteMyStock()"
+                    @click="getPrice()"
                     style="font-size: 21px"
                   ></b-icon>
                 </h6>
@@ -175,24 +175,44 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-4" style="text-align: center">
-                    <div>현재가</div>
-                    <div>16000</div>
+                    
+                    <div v-if="priceDiff>0" >
+                      <div class="h1 font-weight-bold text-danger">{{priceData.now}}</div>
+                      <div class="h5 font-weight-bold text-danger"> ( + {{priceDiff}} )</div>
+                    </div>
+                    <div v-else >
+                      <div class="h1 font-weight-bold text-primary">{{priceData.now}}</div>
+                      <div class="h5 font-weight-bold text-primary"> ( {{priceDiff}} )</div>
+                    </div>
+                    
                   </div>
 
                   <div></div>
                   <div class="col-8">
                     <div class="row">
-                      <div>고가</div>
-                      <div style="margin-left: 3px">15000</div>
-                      <div>종가</div>
-                      <div>15000</div>
+                      <div class="col-6 row">
+                      <div class="h5 font-weight-bold text-gray-800 mr-5"> 고가 </div>
+                      <div class="row">{{priceData.high.toLocaleString()}} 
+                        <div class="ml-2" style="font-size:5pt; margin-top:6px">(원)</div>
+                        </div>
+                      </div>
+                      <div class="col-6 row">
+                      <div class="h5 font-weight-bold text-gray-800 mr-5"> 종가 </div>
+                      <div class="row">{{priceData.prevClose.toLocaleString()}} 
+                        <div class="ml-2" style="font-size:5pt; margin-top:6px">(원)</div>
+                        </div>
+                      </div>
                     </div>
                     <hr />
                     <div class="row">
-                      <div>저가</div>
-                      <div style="margin-left: 3px">15000</div>
-                      <div>시가</div>
-                      <div>15000</div>
+                      <div class="col-6 row">
+                      <div class="h5 font-weight-bold text-gray-800 mr-5"> 저가 </div>
+                      <div style="margin-left: 3px">{{priceData.low.toLocaleString()}} (원)</div>
+                      </div>
+                      <div class="col-6 row">
+                      <div class="h5 font-weight-bold text-gray-800 mr-5"> 시가 </div>
+                      <div>{{priceData.open.toLocaleString()}} (원)</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -350,6 +370,8 @@ export default {
       stockdetailinfo: { stockName: "" },
       stockForeignerPer: "",
       comment: "",
+      priceData: {},
+      priceDiff : "",
     };
   },
   components: { ListTable, StockTable },
@@ -373,8 +395,21 @@ export default {
           this.stockForeignerPer =
             "width: " + this.stockdetailinfo.stockForeigner + "%";
 
+          this.getPrice();
           this.getNews();
           this.getReplys();
+        });
+    },
+    getPrice(){
+      http
+        .get(`/stock/price`, { params: { id: this.$route.params.id } })
+        .then(({ data }) => {
+          console.log(data);
+          console.log(this.stockdetailinfo);
+          this.priceData = data;
+          
+          this.priceDiff = this.priceData.now - this.priceData.prevClose;
+          
         });
     },
     addLikeStock() {
