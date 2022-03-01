@@ -194,13 +194,13 @@
                       <div class="col-6 row">
                       <div class="h5 font-weight-bold text-gray-800 mr-5" style="margin-top: 5px;"> 고가 </div>
                       <div class="row" style="font-size:15pt">{{priceData.high}} 
-                        <div class="ml-2" style="font-size:5pt; margin-top:10px">(원)</div>
+                        <div class="ml-2" style="font-size:5pt; margin-top:10px">($)</div>
                         </div>
                       </div>
                       <div class="col-6 row">
                       <div class="h5 font-weight-bold text-gray-800 mr-5" style="margin-top: 5px;"> 종가 </div>
                       <div class="row" style="font-size:15pt">{{priceData.prevClose}} 
-                        <div class="ml-2" style="font-size:5pt; margin-top:10px">(원)</div>
+                        <div class="ml-2" style="font-size:5pt; margin-top:10px">($)</div>
                         </div>
                       </div>
                     </div>
@@ -209,13 +209,13 @@
                       <div class="col-6 row">
                       <div class="h5 font-weight-bold text-gray-800 mr-5" style="margin-top: 5px;"> 저가 </div>
                       <div class="row" style="font-size:15pt">{{priceData.low}} 
-                        <div class="ml-2" style="font-size:5pt; margin-top:10px">(원)</div>
+                        <div class="ml-2" style="font-size:5pt; margin-top:10px">($)</div>
                         </div>
                       </div>
                       <div class="col-6 row">
                       <div class="h5 font-weight-bold text-gray-800 mr-5" style="margin-top: 5px;"> 시가 </div>
                       <div class="row" style="font-size:15pt">{{priceData.open}} 
-                        <div class="ml-2" style="font-size:5pt; margin-top:10px">(원)</div>
+                        <div class="ml-2" style="font-size:5pt; margin-top:10px">($)</div>
                         </div>
                       </div>
                     </div>
