@@ -72,7 +72,7 @@
                   <div
                     class="text-xs font-weight-bold text-success text-uppercase mb-1"
                   >
-                    종가
+                    섹터
                   </div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
                     {{ stockdetailinfo.stockSector }}
@@ -95,7 +95,7 @@
                   <div
                     class="text-xs font-weight-bold text-warning text-uppercase mb-1"
                   >
-                    WICS 섹터
+                    산업
                   </div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
                     {{ stockdetailinfo.stockWics }}
