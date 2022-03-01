@@ -7,21 +7,6 @@
         <h1 class="h3 mb-0 text-gray-800">
           {{ stockdetailinfo.stockName }}
           <b-icon
-            v-if="!star_tag"
-            class="mb-2 mx-1 staricon1"
-            icon="star"
-            variant="secondary"
-            @click="addLikeStock()"
-          ></b-icon>
-          <b-icon
-            v-else
-            class="mb-2 mx-1 staricon2"
-            icon="star-fill"
-            variant="warning"
-            @click="deleteLikeStock()"
-          ></b-icon>
-
-          <b-icon
             v-if="!myStock_tag"
             class="mb-2 mx-1 staricon2"
             icon="bag"
@@ -34,6 +19,20 @@
             icon="bag-fill"
             variant="info"
             @click="deleteMyStock()"
+          ></b-icon>
+          <b-icon
+            v-if="!star_tag"
+            class="mb-2 mx-1 staricon1"
+            icon="star"
+            variant="secondary"
+            @click="addLikeStock()"
+          ></b-icon>
+          <b-icon
+            v-else
+            class="mb-2 mx-1 staricon2"
+            icon="star-fill"
+            variant="warning"
+            @click="deleteLikeStock()"
           ></b-icon>
         </h1>
       </div>
@@ -118,12 +117,12 @@
                   <div
                     class="text-xs font-weight-bold text-info text-uppercase mb-1"
                   >
-                    외국인소진률
+                    가격 예측
                   </div>
                   <div class="row no-gutters align-items-center">
                     <div class="col-auto">
                       <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                        {{ stockdetailinfo.stockForeigner }} %
+                        40%
                       </div>
                     </div>
                     <div class="col">
@@ -399,7 +398,7 @@ export default {
           this.stockdetailinfo = data;
           console.log(this.stockdetailinfo);
           this.stockForeignerPer =
-            "width: " + this.stockdetailinfo.stockForeigner + "%";
+            "width: 40%";
 
           this.getPrice();
           this.getNews();
