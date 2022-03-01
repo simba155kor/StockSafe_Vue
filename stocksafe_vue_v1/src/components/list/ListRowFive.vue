@@ -44,7 +44,7 @@ export default {
   methods: {
     ...mapMutations(["SET_TRUE_NOW_PAGE_STATE"]),
     goDetail() {
-      this.SET_TRUE_NOW_PAGE_STATE(this.predictId * 1);
+      this.SET_TRUE_NOW_PAGE_STATE(this.predictId);
 
       var tag_like = false;
       if (this.getNowPageStateLike) tag_like = true;

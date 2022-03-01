@@ -182,7 +182,7 @@ export default {
         });
     },
     searching() {
-      this.SET_TRUE_NOW_PAGE_STATE(this.selected.id * 1);
+      this.SET_TRUE_NOW_PAGE_STATE(this.selected.id);
 
       var tag_like = false;
       if (this.getNowPageStateLike) tag_like = true;

@@ -10,9 +10,9 @@ export default new Vuex.Store({
     user_id : "",
     user_name: "",
     like_stock: {},
-    kospi_like_stock: [],
+    nasdaq_like_stock: [],
     my_stock: {},
-    kospi_my_stock:[],
+    nasdaq_my_stock:[],
     now_page_state_like: false,
     now_page_state_my: false,
   },
@@ -28,37 +28,33 @@ export default new Vuex.Store({
       state.user_name = null;
     },
     SET_LIKE_STOCK(state, data) {
-      var arr = new Array();
+      let arr = new Object();
       
       state.like_stock = data;
       
       state.like_stock.forEach(element => {
-        arr[element.predictId*1] = 1;
+        arr[element.predictId] = 1;
       });
 
-      state.kospi_like_stock = arr;
+      state.nasdaq_like_stock = arr;
     },
     SET_MY_STOCK(state, data) {
-      var arr = new Array();
+      let arr = new Object();
       
       state.my_stock = data;
       
       state.my_stock.forEach(element => {
-        arr[element.predictId*1] = 1;
+        arr[element.predictId] = 1;
       });
 
-      state.kospi_my_stock = arr;
+      state.nasdaq_my_stock = arr;
     },
-    SET_TRUE_NOW_PAGE_STATE(state, num) {
+    SET_TRUE_NOW_PAGE_STATE(state, id) {
 
-      if (state.kospi_like_stock[num * 1] == 1) {
-        state.now_page_state_like = true;
-      }
+      if(state.nasdaq_like_stock[id] === 1) state.now_page_state_like = true;
       else state.now_page_state_like = false;
       
-      if (state.kospi_my_stock[num * 1] == 1) {
-        state.now_page_state_my = true;
-      }
+      if(state.nasdaq_my_stock[id] === 1) state.now_page_state_my = true;
       else state.now_page_state_my = false;
       
     },
@@ -66,17 +62,17 @@ export default new Vuex.Store({
       state.now_page_state_like = false;
       state.now_page_state_my = false;
     },
-    SET_INDEX_LIKE_STOCK(state, num) {
-      if (state.kospi_like_stock[num * 1] == 1) {
-        state.kospi_like_stock[num * 1] = 0;
+    SET_INDEX_LIKE_STOCK(state, id) {
+      if (state.nasdaq_like_stock[id] == 1) {
+        state.nasdaq_like_stock[id] = 0;
       }
-      else state.kospi_like_stock[num * 1] = 1;
+      else state.nasdaq_like_stock[id] = 1;
     },
-    SET_INDEX_MY_STOCK(state, num) {
-      if (state.kospi_my_stock[num * 1] == 1) {
-        state.kospi_my_stock[num * 1] = 0;
+    SET_INDEX_MY_STOCK(state, id) {
+      if (state.nasdaq_my_stock[id] == 1) {
+        state.nasdaq_my_stock[id] = 0;
       }
-      else state.kospi_my_stock[num * 1] = 1;
+      else state.nasdaq_my_stock[id] = 1;
     },
     
   },
