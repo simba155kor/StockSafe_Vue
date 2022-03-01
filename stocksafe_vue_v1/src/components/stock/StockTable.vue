@@ -4,28 +4,28 @@
     <tbody>
       <tr>
         <th>시가총액</th>
-        <td class="text-right">{{ stockdetailinfo.stockMarketcap }}원</td>
+        <td class="text-right">{{ priceData.marketCap }}원</td>
       </tr>
 
       <tr>
         <th>상장주식수</th>
-        <td class="text-right">{{ stockdetailinfo.stockCount }}주</td>
+        <td class="text-right">{{ priceData.sharesOutstanding }}주</td>
       </tr>
       <tr>
         <th>PER</th>
-        <td class="text-right">{{ stockdetailinfo.stockPer }}</td>
+        <td class="text-right">{{ priceData.pe }}</td>
       </tr>
       <tr>
-        <th>PBR</th>
-        <td class="text-right">{{ stockdetailinfo.stockPbr }}</td>
+        <th>EPS</th>
+        <td class="text-right">{{ priceData.eps }}</td>
       </tr>
       <tr>
         <th>BPS</th>
-        <td class="text-right">{{ stockdetailinfo.stockBps }}</td>
+        <td class="text-right">{{ priceData.bps }}</td>
       </tr>
       <tr>
         <th>배당수익률</th>
-        <td class="text-right">{{ stockdetailinfo.stockDivyield }}</td>
+        <td class="text-right">{{ priceData.annualYield }}</td>
       </tr>
     </tbody>
   </table>
@@ -39,7 +39,7 @@ export default {
     data: [],
     columns: [],
     type: String,
-    stockdetailinfo: {},
+    priceData: {},
   },
   data() {
     return {

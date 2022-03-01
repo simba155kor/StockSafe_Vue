@@ -98,7 +98,7 @@
                     산업
                   </div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">
-                    {{ stockdetailinfo.stockWics }}
+                    {{ stockdetailinfo.stockIndustry }}
                   </div>
                 </div>
                 <div class="col-auto">
@@ -279,7 +279,7 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-              <stock-table :stockdetailinfo="stockdetailinfo" />
+              <stock-table :priceData="priceData" />
             </div>
           </div>
         </div>
@@ -424,8 +424,12 @@ export default {
           this.priceData.now = this.priceData.now.toLocaleString();
           this.priceData.high = this.priceData.high.toLocaleString();
           this.priceData.low = this.priceData.low.toLocaleString();
-
-         
+          this.priceData.marketCap = this.priceData.marketCap.toLocaleString();
+          this.priceData.sharesOutstanding = this.priceData.sharesOutstanding.toLocaleString();
+          this.priceData.eps = this.priceData.eps.toLocaleString();
+          this.priceData.pe = this.priceData.pe.toLocaleString();
+          this.priceData.bps = this.priceData.bps.toLocaleString();
+          this.priceData.annualYield = this.priceData.annualYield.toLocaleString();
           
         });
     },
