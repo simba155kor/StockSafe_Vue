@@ -57,6 +57,11 @@
       <router-link class="ll" :to="{ name: 'LikeStock' }">관심주식</router-link>
     </li>
 
+    <!-- Nav Item - Charts -->
+    <li class="nav-item" v-if="this.getLoginState">
+      <router-link class="ll" :to="{ name: 'ListStock' }">주식목록</router-link>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block" />
     <div v-if="this.getLoginState">

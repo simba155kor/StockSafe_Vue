@@ -30,7 +30,11 @@
         navbar-search
       "
     >
-      <form class="input-group" autocomplete="off">
+      <form
+        class="input-group"
+        autocomplete="off"
+        style="width: 300px; margin-left: 20px"
+      >
         <Dropdown
           :options="search_list"
           v-on:selected="validateSelection"
@@ -40,8 +44,17 @@
         >
         </Dropdown>
         <div class="input-group-append">
-          <button class="btn btn-primary" type="button" @click="searching()">
-            <i class="fas fa-search fa-sm"></i>
+          <button
+            class="btn btn-primary"
+            type="button"
+            @click="searching()"
+            style="margin-right: 2px"
+          >
+            <b-icon
+              class="searchicon"
+              icon="search"
+              style="font-size: 21px; font-color: white"
+            ></b-icon>
           </button>
         </div>
       </form>
@@ -86,7 +99,26 @@
         </div>
       </li>
 
-      <span v-if="this.getLoginState"> {{ this.getName }} 님 환영합니다!</span>
+      <span v-if="this.getLoginState">
+        <b-icon
+          class="person-fillicon"
+          icon="person-fill"
+          style="
+            font-size: 30px;
+            font-color: grey;
+            margin-top: 5px;
+            margin-right: 20px;
+          "
+        ></b-icon>
+      </span>
+      <span v-if="this.getLoginState">
+        <div class="userNickDiv">
+          <span class="userNickFont"
+            ><b>{{ this.getName }}</b></span
+          >
+          <span> </span>
+        </div>
+      </span>
       <div v-else>
         <button class="btn btn-success">
           <router-link
@@ -234,5 +266,16 @@ export default {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.userNickFont {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 23px;
+}
+
+.userNickDiv {
+  margin-top: 2px;
+  text-align: center;
 }
 </style>

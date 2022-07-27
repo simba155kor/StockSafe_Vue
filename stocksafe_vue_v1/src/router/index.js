@@ -11,6 +11,7 @@ import UserLogin from "@/components/userinfo/UserLogin.vue";
 import UserUpdate from "@/components/userinfo/UserUpdate.vue";
 import UserJoin from "@/components/userinfo/UserJoin.vue";
 import UserPassword from "@/components/userinfo/UserPassword.vue";
+import ListStock from "../views/ListStock.vue";
 
 Vue.use(VueRouter);
 
@@ -29,6 +30,11 @@ const routes = [
     path: "/mystock",
     name: "MyStock",
     component: MyStock,
+  },
+  {
+    path: "/list",
+    name: "ListStock",
+    component: ListStock,
   },
   {
     path: "/todayissue",

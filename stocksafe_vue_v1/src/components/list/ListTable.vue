@@ -11,17 +11,26 @@
     <tbody v-if="type == 'two'">
       <list-row-two v-for="(item, index) in data" :key="index" v-bind="item" />
     </tbody>
+    <tbody v-if="type == 'forStockList'">
+      <list-row-for-stock-list
+        v-for="(item, index) in data"
+        :key="index"
+        v-bind="item"
+      />
+    </tbody>
   </table>
 </template>
 
 <script>
 import ListRowTwo from "./ListRowTwo.vue";
 import ListRowFive from "./ListRowFive.vue";
+import ListRowForStockList from "./ListRowForStockList.vue";
 export default {
   name: "ListTable",
   components: {
     ListRowFive,
     ListRowTwo,
+    ListRowForStockList,
   },
   props: {
     data: [],

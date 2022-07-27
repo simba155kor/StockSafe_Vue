@@ -1,12 +1,11 @@
 <template>
   <div>
-
     <!-- Begin Page Content -->
     <div class="container-fluid">
       <!-- Page Heading -->
-      <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">오늘의 주식</h1>
-      </div>
+      <div
+        class="d-sm-flex align-items-center justify-content-between mb-4"
+      ></div>
 
       <!-- Content Row -->
 
@@ -28,6 +27,7 @@
             >
               <h6 class="m-0 font-weight-bold text-primary mr-2">
                 Today's Stock
+                <i class="bi bi-arrow-90deg-left"></i>
               </h6>
             </div>
             <!-- Card Body -->
@@ -93,8 +93,8 @@
 
 export default {
   name: "Home",
-  created(){
-    this.openWindowPop();
+  created() {
+    //this.openWindowPop();
   },
   data() {
     return {
@@ -137,8 +137,9 @@ export default {
     onSlideEnd() {
       this.sliding = false;
     },
-    openWindowPop(){
-      var options = 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no';
+    openWindowPop() {
+      var options =
+        "top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no";
       window.open("/popup", "popup", options);
     },
   },

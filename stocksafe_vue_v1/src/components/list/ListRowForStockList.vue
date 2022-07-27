@@ -1,5 +1,6 @@
 <template>
   <tr>
+    <td>{{ id }}</td>
     <td>
       <a class="stockName" @click="goDetail()">
         <!-- <router-link :to="{ name: 'StockDetail', params: { no: no } }">{{
@@ -8,11 +9,8 @@
         {{ stockName }}
       </a>
     </td>
-
-    <td>{{ stockYesterday }}</td>
-    <td>{{ predictDay }}</td>
-    <td>{{ predictMonth }}</td>
-    <td>{{ predictYear }}</td>
+    <td>{{ stockSector }}</td>
+    <td>{{ stockIndustry }}</td>
   </tr>
 </template>
 
@@ -25,15 +23,10 @@ export default {
   name: "BoardListRow",
 
   props: {
-    id: Number,
-    memberId: String,
-    predictDay: Number,
-    predictGraph: String,
-    predictId: String,
-    predictMonth: Number,
-    predictYear: Number,
+    id: String,
+    stockSector: String,
+    stockIndustry: String,
     stockName: String,
-    stockYesterday: Number,
   },
   computed: {
     changeDateFormat() {
@@ -44,8 +37,7 @@ export default {
   methods: {
     ...mapMutations(["SET_TRUE_NOW_PAGE_STATE"]),
     goDetail() {
-      this.SET_TRUE_NOW_PAGE_STATE(this.predictId);
-      console.log(this.predictId);
+      this.SET_TRUE_NOW_PAGE_STATE(this.id);
 
       var tag_like = false;
       if (this.getNowPageStateLike) tag_like = true;
@@ -57,7 +49,7 @@ export default {
         .push({
           name: "StockDetail",
           params: {
-            id: this.predictId,
+            id: this.id,
             star_tag: tag_like,
             myStock_tag: tag_my,
           },
