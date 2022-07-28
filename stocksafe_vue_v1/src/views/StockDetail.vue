@@ -55,7 +55,12 @@
                   >
                     시장
                   </div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  <div
+                    class="h5 mb-0 font-weight-bold text-gray-800 clickTag"
+                    @click="
+                      goStockList('stock_market', stockdetailinfo.stockMarket)
+                    "
+                  >
                     {{ stockdetailinfo.stockMarket }}
                   </div>
                 </div>
@@ -83,7 +88,12 @@
                   >
                     섹터
                   </div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  <div
+                    class="h5 mb-0 font-weight-bold text-gray-800 clickTag"
+                    @click="
+                      goStockList('stock_sector', stockdetailinfo.stockSector)
+                    "
+                  >
                     {{ stockdetailinfo.stockSector }}
                   </div>
                 </div>
@@ -111,7 +121,15 @@
                   >
                     산업
                   </div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  <div
+                    class="h5 mb-0 font-weight-bold text-gray-800 clickTag"
+                    @click="
+                      goStockList(
+                        'stock_industry',
+                        stockdetailinfo.stockIndustry
+                      )
+                    "
+                  >
                     {{ stockdetailinfo.stockIndustry }}
                   </div>
                 </div>
@@ -315,38 +333,16 @@
                   Earnings Overview
                 </h6>
                 <div class="dropdown no-arrow">
-                  <a
-                    class="dropdown-toggle"
-                    href="#"
-                    role="button"
-                    id="dropdownMenuLink"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                  </a>
-                  <div
-                    class="
-                      dropdown-menu dropdown-menu-right
-                      shadow
-                      animated--fade-in
-                    "
-                    aria-labelledby="dropdownMenuLink"
-                  >
-                    <div class="dropdown-header">Dropdown Header:</div>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
+                  <b-icon
+                    class="questionIcon"
+                    icon="question-circle"
+                    v-b-popover.hover.left="this.graphExplanation"
+                  ></b-icon>
                 </div>
               </div>
               <!-- Card Body -->
               <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="myAreaChart"></canvas>
-                </div>
+                <img :src="predictImgUrl" style="width: 100%; height: 100%" />
               </div>
             </div>
           </div>
@@ -469,6 +465,11 @@ export default {
       priceData: {},
       priceDiff: "",
       nowTime: "",
+      predictImgUrl:
+        "https://storage.cloud.google.com/stocksafe_storage/prophet/img/",
+      graphExplanation:
+        "Facebook의 시계열 예측모델 Prophet을 이용하여 앞으로 1년 동안의 예측 가격을 제공합니다. 초록색 꺽은선 차트를 통해 확인할 수 있습니다. 빨간색, 초록색 막대 그래프는 지금까지의 시가를 보여줍니다.",
+      showExplainBox: false,
     };
   },
   components: { ListTable, StockTable },
@@ -491,6 +492,10 @@ export default {
           console.log(this.stockdetailinfo);
           //this.stockForeignerPer = "width: 40%";
 
+          this.predictImgUrl =
+            "https://storage.cloud.google.com/stocksafe_storage/prophet/img/";
+          this.predictImgUrl += this.stockdetailinfo.id;
+          this.predictImgUrl += ".png";
           this.getPrice();
           this.getNews();
           this.getReplys();
@@ -590,6 +595,17 @@ export default {
           alert("내 주식에서 삭제되었습니다.");
         });
     },
+    goStockList(searchListTag, keyword) {
+      this.$router
+        .push({
+          name: "ListStock",
+          query: {
+            tag: searchListTag,
+            keyword: keyword,
+          },
+        })
+        .catch(() => {});
+    },
     addReply() {
       // 대댓아닌 경우에 해당
       console.log(this.getId);
@@ -641,6 +657,14 @@ export default {
 
 .staricon2:hover {
   opacity: 50%;
+  cursor: pointer;
+}
+
+.questionIcon:hover {
+  cursor: pointer;
+}
+
+.clickTag:hover {
   cursor: pointer;
 }
 </style>
