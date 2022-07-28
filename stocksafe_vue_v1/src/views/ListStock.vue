@@ -8,7 +8,16 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">주식 목록</h6>
+        <h6 class="m-0 font-weight-bold text-primary">
+          주식 목록
+          <b-icon
+            class="staricon2"
+            icon="arrow-clockwise"
+            variant="secondary"
+            @click="renew()"
+            style="font-size: 21px"
+          ></b-icon>
+        </h6>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -33,12 +42,24 @@ import ListTable from "@/components/list/ListTable.vue";
 export default {
   name: "ListStock",
   created() {
-    http
-      .get(`/stock/searchAll`, { params: { keyword: "%" } })
-      .then(({ data }) => {
-        console.log(data);
-        this.search_list = data;
-      });
+    console.log(this.$route.query);
+    if (Object.keys(this.$route.query).length === 1) {
+      http
+        .get(`/stock/searchAll`, { params: { keyword: "%" } })
+        .then(({ data }) => {
+          console.log(data);
+          this.search_list = data;
+        });
+    } else {
+      http
+        .get(`/stock/searchAllbyTag`, {
+          params: this.$route.query,
+        })
+        .then(({ data }) => {
+          console.log(data);
+          this.search_list = data;
+        });
+    }
   },
   computed: {
     ...mapGetters(["getId"]),
@@ -46,7 +67,6 @@ export default {
   data() {
     return {
       data: null,
-      // 예측 가격을 3일, 1주일, 1달 단위로 여러개 보여줘도 될것같지만 이건 서버 비용을 고려해봐야
       columns: ["종목코드", "종목명", "섹터", "산업"],
       search_list: [],
       stockdetailinfo: null,
@@ -55,7 +75,16 @@ export default {
   components: {
     ListTable,
   },
-  methods: {},
+  methods: {
+    renew() {
+      http
+        .get(`/stock/searchAll`, { params: { keyword: "%" } })
+        .then(({ data }) => {
+          console.log(data);
+          this.search_list = data;
+        });
+    },
+  },
 };
 </script>
 

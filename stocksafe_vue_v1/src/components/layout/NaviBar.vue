@@ -59,7 +59,9 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item" v-if="this.getLoginState">
-      <router-link class="ll" :to="{ name: 'ListStock' }">주식목록</router-link>
+      <router-link class="ll" :to="{ name: 'ListStock', query: { list: all } }"
+        >주식목록</router-link
+      >
     </li>
 
     <!-- Divider -->
